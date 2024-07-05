@@ -1,0 +1,454 @@
+<REAPER_PROJECT 0.1 "7.06/win64" 1701866036
+  <NOTES 0 2
+  >
+  RIPPLE 0
+  GROUPOVERRIDE 0 0 0
+  AUTOXFADE 1
+  ENVATTACH 3
+  POOLEDENVATTACH 0
+  MIXERUIFLAGS 11 48
+  PEAKGAIN 1
+  FEEDBACK 0
+  PANLAW 1
+  PROJOFFS 0 0 0
+  MAXPROJLEN 0 0
+  GRID 3199 8 1 8 1 0 0 0
+  TIMEMODE 1 5 -1 30 0 0 -1
+  VIDEO_CONFIG 0 0 256
+  PANMODE 3
+  CURSOR 95
+  ZOOM 35.85960413809064 3001 0
+  VZOOMEX 6 0
+  USE_REC_CFG 0
+  RECMODE 1
+  SMPTESYNC 0 30 100 40 1000 300 0 0 1 0 0
+  LOOP 0
+  LOOPGRAN 0 4
+  RECORD_PATH "Media" ""
+  <RECORD_CFG
+    ZXZhdxgAAQ==
+  >
+  <APPLYFX_CFG
+  >
+  RENDER_FILE ""
+  RENDER_PATTERN ""
+  RENDER_FMT 0 2 0
+  RENDER_1X 0
+  RENDER_RANGE 1 0 0 18 1000
+  RENDER_RESAMPLE 3 0 1
+  RENDER_ADDTOPROJ 0
+  RENDER_STEMS 0
+  RENDER_DITHER 0
+  TIMELOCKMODE 1
+  TEMPOENVLOCKMODE 1
+  ITEMMIX 1
+  DEFPITCHMODE 589824 0
+  TAKELANE 1
+  SAMPLERATE 44100 0 0
+  <RENDER_CFG
+    ZXZhdxgAAQ==
+  >
+  LOCK 1
+  <METRONOME 6 2
+    VOL 0.25 0.125
+    FREQ 800 1600 1
+    BEATLEN 4
+    SAMPLES "" ""
+    PATTERN 2863311530 2863311529
+    MULT 1
+  >
+  GLOBAL_AUTO -1
+  TEMPO 120 4 4
+  PLAYRATE 1 0 0.25 4
+  SELECTION 0 0
+  SELECTION2 0 0
+  MASTERAUTOMODE 0
+  MASTERTRACKHEIGHT 0 0
+  MASTERPEAKCOL 16576
+  MASTERMUTESOLO 0
+  MASTERTRACKVIEW 0 0.6667 0.5 0.5 0 0 0 0 0 0 0 0 0 0
+  MASTERHWOUT 0 0 1 0 0 0 0 -1
+  MASTER_NCH 2 2
+  MASTER_VOLUME 1 0 -1 -1 1
+  MASTER_PANMODE 3
+  MASTER_FX 1
+  MASTER_SEL 0
+  <MASTERPLAYSPEEDENV
+    EGUID {34A83E70-79D3-4C07-BE0C-A9DB3FC49E4F}
+    ACT 0 -1
+    VIS 0 1 1
+    LANEHEIGHT 0 0
+    ARM 0
+    DEFSHAPE 0 -1 -1
+  >
+  <TEMPOENVEX
+    EGUID {FA214882-D9E9-49BB-91E3-384155C45C69}
+    ACT 1 -1
+    VIS 1 0 1
+    LANEHEIGHT 0 0
+    ARM 0
+    DEFSHAPE 1 -1 -1
+  >
+  <PROJBAY
+  >
+  <TRACK {780544F7-84B2-42F9-B03D-1BD1CC02E6B1}
+    NAME ""
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0
+    FIXEDLANES 9 0 0
+    SEL 1
+    REC 1 0 0 0 0 0 0 0
+    VU 2
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {780544F7-84B2-42F9-B03D-1BD1CC02E6B1}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+    <FXCHAIN
+      WNDRECT 1081 -807 957 536
+      SHOW 1
+      LASTSEL 0
+      DOCKED 0
+      BYPASS 0 0 0
+      <VST "VST: ReaGate (Cockos)" reagate.dll 0 "" 1919248244<56535472656774726561676174650000> ""
+        dGdlcu9e7f4EAAAAAQAAAAAAAAACAAAAAAAAAAQAAAAAAAAACAAAAAAAAAACAAAAAQAAAAAAAAACAAAAAAAAAFwAAAAAAAAAAAAQAA==
+        776t3g3wrd7jzE88PH7iO+TDHD0AAAAAAAAAAAAAgD8AAAAAAAAAAAAAAACc0QczAACAP5zRBzMAAIA/AAAAAAAAAAAAAAAALBYLPwAAAAAAAAAAAAAAAAAAAAA=
+        AAAQAAAA
+      >
+      FLOATPOS 0 0 0 0
+      FXID {D231F2B2-E577-484B-ADDF-357DCB841C8B}
+      WAK 0 0
+      BYPASS 0 0 0
+      <VST "VST: ReaComp (Cockos)" reacomp.dll 0 "" 1919247213<5653547265636D726561636F6D700000> ""
+        bWNlcu9e7f4EAAAAAQAAAAAAAAACAAAAAAAAAAQAAAAAAAAACAAAAAAAAAACAAAAAQAAAAAAAAACAAAAAAAAAFwAAAAAAAAAAAAQAA==
+        776t3g3wrd7m2q89PHkmPaabxDsK16M8AAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAnNEHMwAAgD8AAAAAzcxMPQAAAAAAAAAAAAAAAAAAgD4AAAAAAAAAAAAAAAA=
+        AFByb2dyYW0gMQAQAAAA
+      >
+      FLOATPOS 0 0 0 0
+      FXID {C9D7AF40-BB48-4B54-834F-52B4C3D28BE3}
+      WAK 0 0
+      BYPASS 0 0 0
+      <VST "VST: ReaEQ (Cockos)" reaeq.dll 0 "" 1919247729<56535472656571726561657100000000> ""
+        cWVlcu5e7f4CAAAAAQAAAAAAAAACAAAAAAAAAAIAAAABAAAAAAAAAAIAAAAAAAAArAAAAAEAAAAAAAAA
+        IQAAAAQAAAAEAAAAAQAAAAAAAAAAAFRAAAAAAAAA8D8AAAAAAAAAQAACAAAAAQAAAAH9/sijO3pAYt5+Ti6v8z/wlUOLbOfvPwACAAAAAQAAAAFtVHMZAZJA/x/TTFCT
+        5T8AAAAAAADwPwACAAAAAQAAAP8/3XZU46NAvvWQ3fdL9z8BWmQ730/pPwABAAAAAQAAAAAAAAAAAPA/AAAAAPsCAAAXAgAAAgAAAA==
+        AHN0b2NrIC0gSW50aW1hdGUgZmVtYWxlIHZvY2FsAAAAAAA=
+      >
+      PRESETNAME "stock - Intimate female vocal"
+      FLOATPOS 0 0 0 0
+      FXID {F6A24F62-3AC2-4EBD-B252-284C6955ACF1}
+      WAK 0 0
+      BYPASS 0 0 0
+      <VIDEO_EFFECT "Video processor" ""
+        <CODE
+          |// Track opacity/zoom/pan
+          |//@param1:opacity 'opacity' 1
+          |//@param2:zoom 'zoom' 0 -10 10 0
+          |//@param3:xoffs 'X offset' 0 -1 1 0
+          |//@param4:yoffs 'Y offset' 0 -1 1 0
+          |//@param5:rotate 'rotate' 0 -360 360 0 1
+          |//@param7:filter 'filter' 0 0 1 0.5 1
+          |//@param8:clear 'clear bg' 1 0 1 0.5 1
+          |//@param9:force_w 'force width' 0 0 2600 1024 2
+          |//@param10:force_h 'force height' 0 0 2600 1024 2
+          |//@param11:paspect 'preserve aspect' 1 0 1 0.5 1
+          |
+          |(bg_img=input_ismaster() ? -2 : input_track(0)) ? (
+          |  force_w &= -2; force_h &= -2;
+          |  force_w && !force_h ? force_h = (force_w * project_h / project_w)&-2;
+          |  force_h && !force_w ? force_w = (force_h * project_w / project_h)&-2;
+          |  force_w>0 && force_h>0 ? ( project_w=force_w; project_h=force_h );
+          |
+          |  w = opacity < 0.01 ? 0 : opacity > 0.99 ? 1 : opacity;
+          |  gfx_a2=0;
+          |  gfx_blit((w < 1 || clear < 0.5) ? bg_img : -2,1);
+          |
+          |  w > 0 ? (
+          |    gfx_mode = filter>0.5 ? 256 : 0;
+          |    gfx_a=w;
+          |    z = 10^(zoom/10);
+          |    dw = (project_w*z)&-2;
+          |    dh = (project_h*z)&-2;
+          |    x = (project_w - dw + xoffs*(project_w+dw))*.5;
+          |    y = (project_h - dh + yoffs*(project_h+dh))*.5;
+          |    rotate == 0 ? gfx_blit(0,paspect, x|0,y|0,dw,dh) : (
+          |      input_info(0,srcw,srch);
+          |      sc=2.0; sc2=sc*.5 - 0.5;
+          |      gfx_rotoblit(0,rotate*$pi/180,(x-dw*sc2)|0,(y-dh*sc2)|0,dw*sc,dh*sc, -srcw*sc2, -srch*sc2, srcw*sc, srch*sc);
+          |    );
+          |  );
+          |);
+        >
+        CODEPARM 1 0 0 0 0 0 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+      >
+      PRESETNAME "Basic helpers: Track opacity/zoom/pan"
+      FLOATPOS 0 0 0 0
+      FXID {E7F3CCF1-8EEF-48A9-AEB7-5A72EA078192}
+      WAK 0 0
+    >
+    <ITEM
+      POSITION 0
+      SNAPOFFS 0
+      LENGTH 3.94884353741497
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0.01 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {1162BC85-FDF1-4CC9-AEFD-364391297026}
+      IID 1
+      NAME 01-231206_1254.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {BC4FFC65-C264-4F1D-B7CE-45DE426BAEDA}
+      RECPASS 1
+      <SOURCE WAVE
+        FILE "C:\Users\Imai\Documents\REAPER Media\01-231206_1254.wav"
+      >
+    >
+    <ITEM
+      POSITION 3.94884353741497
+      SNAPOFFS 0
+      LENGTH 9.66095238095238
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0.01 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {41572547-D105-4E39-BFA7-68471D512B54}
+      IID 2
+      NAME 01-231206_1254-01.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {0E393B78-7988-48BE-989F-C1B62B1E4B90}
+      RECPASS 2
+      <SOURCE WAVE
+        FILE "C:\Users\Imai\Documents\REAPER Media\01-231206_1254-01.wav"
+      >
+    >
+    <ITEM
+      POSITION 13.60979591836735
+      SNAPOFFS 0
+      LENGTH 4.99374149659864
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0.01 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {A9332011-1EBB-44FC-B716-6792D5BFD1CB}
+      IID 3
+      NAME 01-231206_1255.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {668336CF-9FB5-4623-A245-F2769842A0FD}
+      RECPASS 3
+      <SOURCE WAVE
+        FILE "C:\Users\Imai\Documents\REAPER Media\01-231206_1255.wav"
+      >
+    >
+    <ITEM
+      POSITION 18.60353741496599
+      SNAPOFFS 0
+      LENGTH 3.55410430839002
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0.01 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {2BA411BF-6EA3-4CE2-A9AA-6FF6788E8677}
+      IID 4
+      NAME 01-231206_1255-01.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {AFD43863-1239-4BEE-8C85-F8CDF716686A}
+      RECPASS 4
+      <SOURCE WAVE
+        FILE "C:\Users\Imai\Documents\REAPER Media\01-231206_1255-01.wav"
+      >
+    >
+    <ITEM
+      POSITION 22.15764172335601
+      SNAPOFFS 0
+      LENGTH 6.3869387755102
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0.01 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {EBF8FC5F-23C7-4715-B12A-29ABF055EBF5}
+      IID 6
+      NAME 01-231206_1256-01.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {D4E4EE04-EF25-4F1A-AE71-ADE8C1E3BC21}
+      RECPASS 6
+      <SOURCE WAVE
+        FILE "C:\Users\Imai\Documents\REAPER Media\01-231206_1256-01.wav"
+      >
+    >
+    <ITEM
+      POSITION 28.54458049886621
+      SNAPOFFS 0
+      LENGTH 6.59591836734694
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0.01 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {17C8CFEE-0485-4932-9C90-D48110933075}
+      IID 7
+      NAME 01-231206_1324.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {F19A4DE9-0364-4EFE-A2A5-E58F7171C466}
+      RECPASS 7
+      <SOURCE WAVE
+        FILE "C:\Users\Imai\Documents\REAPER Media\01-231206_1324.wav"
+      >
+    >
+    <ITEM
+      POSITION 35.14049886621315
+      SNAPOFFS 0
+      LENGTH 21.85950113378685
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0.01 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {C6D8B848-7489-4A17-9641-B64263797D60}
+      IID 9
+      NAME 01-231206_1327.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {7ECC059B-2E8D-4E9A-9391-FA894F051B1D}
+      RECPASS 9
+      <SOURCE WAVE
+        FILE "C:\Users\Imai\Documents\REAPER Media\01-231206_1327.wav"
+      >
+    >
+    <ITEM
+      POSITION 57
+      SNAPOFFS 0
+      LENGTH 4.6918820861678
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0.01 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {66D5D208-3540-41E5-9355-C1C1ADAAC1A4}
+      IID 11
+      NAME 01-231206_1328.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {40F7D980-ECC4-4FCB-A0F7-E85236B07B02}
+      RECPASS 10
+      <SOURCE WAVE
+        FILE "C:\Users\Imai\Documents\REAPER Media\01-231206_1328.wav"
+      >
+    >
+    <ITEM
+      POSITION 61.6918820861678
+      SNAPOFFS 0
+      LENGTH 15.558820861678
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0.01 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {5E4BF1D1-526D-486A-9604-3B9106D64C7E}
+      IID 13
+      NAME 01-231206_1329.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {C4F9CA47-D671-4B36-BBA5-04BB5B49120C}
+      RECPASS 12
+      <SOURCE WAVE
+        FILE "C:\Users\Imai\Documents\REAPER Media\01-231206_1329.wav"
+      >
+    >
+    <ITEM
+      POSITION 77.2407029478458
+      SNAPOFFS 0
+      LENGTH 16.39473922902494
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0.01 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {9DB9EE98-CF4C-48A6-B6F8-29794B1E1CC1}
+      IID 14
+      NAME 01-231206_1330.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {AF6A1343-BDB7-4E42-9BE6-DA243510D686}
+      RECPASS 13
+      <SOURCE WAVE
+        FILE "C:\Users\Imai\Documents\REAPER Media\01-231206_1330.wav"
+      >
+    >
+    <ITEM
+      POSITION 93.63544217687075
+      SNAPOFFS 0
+      LENGTH 12.54022675736961
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0.01 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {A783610B-0A16-4C84-9053-DE9451382FA7}
+      IID 15
+      NAME 01-231206_1330-01.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {E77BDB30-071D-46CB-BDA3-E7C4FA314569}
+      RECPASS 14
+      <SOURCE WAVE
+        FILE "C:\Users\Imai\Documents\REAPER Media\01-231206_1330-01.wav"
+      >
+    >
+  >
+>

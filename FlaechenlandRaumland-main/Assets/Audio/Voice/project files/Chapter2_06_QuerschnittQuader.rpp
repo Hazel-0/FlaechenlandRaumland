@@ -1,0 +1,242 @@
+<REAPER_PROJECT 0.1 "6.82/win64" 1693571769
+  <NOTES 0 2
+  >
+  RIPPLE 0
+  GROUPOVERRIDE 0 0 0
+  AUTOXFADE 129
+  ENVATTACH 3
+  POOLEDENVATTACH 0
+  MIXERUIFLAGS 11 48
+  PEAKGAIN 1
+  FEEDBACK 0
+  PANLAW 1
+  PROJOFFS 0 0 0
+  MAXPROJLEN 0 0
+  GRID 3455 8 1 8 1 0 0 0
+  TIMEMODE 1 5 -1 30 0 0 -1
+  VIDEO_CONFIG 0 0 256
+  PANMODE 3
+  CURSOR 0
+  ZOOM 392.51779035588243 0 0
+  VZOOMEX 6 0
+  USE_REC_CFG 0
+  RECMODE 1
+  SMPTESYNC 0 30 100 40 1000 300 0 0 1 0 0
+  LOOP 0
+  LOOPGRAN 0 4
+  RECORD_PATH "" ""
+  <RECORD_CFG
+    ZXZhdxgAAQ==
+  >
+  <APPLYFX_CFG
+  >
+  RENDER_FILE "C:\Users\Imai\Documents\GitHub\FlächenlandRaumland\FlaechenlandRaumland\Assets\Audio\Voice\\Chapter2_06_QuerschnittQuader.wav"
+  RENDER_FMT 0 2 44100
+  RENDER_1X 0
+  RENDER_RANGE 1 0 0 18 1000
+  RENDER_RESAMPLE 3 0 1
+  RENDER_ADDTOPROJ 0
+  RENDER_STEMS 0
+  RENDER_DITHER 0
+  TIMELOCKMODE 1
+  TEMPOENVLOCKMODE 1
+  ITEMMIX 1
+  DEFPITCHMODE 589824 0
+  TAKELANE 1
+  SAMPLERATE 44100 0 0
+  <RENDER_CFG
+    ZXZhdxgAAQ==
+  >
+  LOCK 1
+  <METRONOME 6 2
+    VOL 0.25 0.125
+    FREQ 800 1600 1
+    BEATLEN 4
+    SAMPLES "" ""
+    PATTERN 2863311530 2863311529
+    MULT 1
+  >
+  GLOBAL_AUTO -1
+  TEMPO 120 4 4
+  PLAYRATE 1 0 0.25 4
+  SELECTION 0 0
+  SELECTION2 0 0
+  MASTERAUTOMODE 0
+  MASTERTRACKHEIGHT 0 0
+  MASTERPEAKCOL 16576
+  MASTERMUTESOLO 0
+  MASTERTRACKVIEW 0 0.6667 0.5 0.5 0 0 0 0 0 0 0 0 0
+  MASTERHWOUT 0 0 1 0 0 0 0 -1
+  MASTER_NCH 2 2
+  MASTER_VOLUME 1 0 -1 -1 1
+  MASTER_PANMODE 3
+  MASTER_FX 1
+  MASTER_SEL 0
+  <MASTERPLAYSPEEDENV
+    EGUID {C1CFA4B3-5595-4F3E-ABAB-BE6380BC6E2C}
+    ACT 0 -1
+    VIS 0 1 1
+    LANEHEIGHT 0 0
+    ARM 0
+    DEFSHAPE 0 -1 -1
+  >
+  <TEMPOENVEX
+    EGUID {60ADF097-8557-43A5-8308-5A96657B84DE}
+    ACT 0 -1
+    VIS 1 0 1
+    LANEHEIGHT 0 0
+    ARM 0
+    DEFSHAPE 1 -1 -1
+  >
+  <PROJBAY
+  >
+  <TRACK {D1BB8C10-B2D7-43FD-AF51-020CF820F85F}
+    NAME ""
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0
+    SEL 1
+    REC 1 0 0 0 0 0 0 0
+    VU 2
+    TRACKHEIGHT 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {D1BB8C10-B2D7-43FD-AF51-020CF820F85F}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+    <VOLENV2
+      EGUID {545C69A1-7FD7-421D-B4F3-E81D29EC123B}
+      ACT 1 -1
+      VIS 1 1 1
+      LANEHEIGHT 0 0
+      ARM 1
+      DEFSHAPE 0 -1 -1
+      VOLTYPE 1
+      PT -0 0 0
+      PT 0.2530969 0 0
+      PT 0.28781651 1 0
+      PT 1.18409662 1 0
+      PT 1.19952755 0 0
+      PT 1.40784517 0 0
+      PT 1.41941837 1.08097271 0
+      PT 2.17824522 1.21287133 0 0 1
+      PT 2.20372177 0 0
+      PT 2.70610985 0 0
+    >
+    <FXCHAIN
+      WNDRECT -141 -963 957 536
+      SHOW 0
+      LASTSEL 0
+      DOCKED 0
+      BYPASS 0 0 0
+      <VST "VST: ReaGate (Cockos)" reagate.dll 0 "" 1919248244<56535472656774726561676174650000> ""
+        dGdlcu9e7f4EAAAAAQAAAAAAAAACAAAAAAAAAAQAAAAAAAAACAAAAAAAAAACAAAAAQAAAAAAAAACAAAAAAAAAFwAAAAAAAAAAAAQAA==
+        776t3g3wrd55Hjw87Xo5O+TDHD0AAAAAAAAAAAAAgD8AAAAAAAAAAAAAAACc0QczAACAP5zRBzMAAIA/AAAAAAAAAAAAAAAALBYLPwAAAAAAAAAAAAAAAAAAAAA=
+        AFByb2dyYW0gMQAQAAAA
+      >
+      FLOATPOS 0 0 0 0
+      FXID {F2D6DA1F-EA8A-4DB1-808D-648FABA5795D}
+      WAK 0 0
+      BYPASS 0 0 0
+      <VST "VST: ReaComp (Cockos)" reacomp.dll 0 "" 1919247213<5653547265636D726561636F6D700000> ""
+        bWNlcu9e7f4EAAAAAQAAAAAAAAACAAAAAAAAAAQAAAAAAAAACAAAAAAAAAACAAAAAQAAAAAAAAACAAAAAAAAAFwAAAAAAAAAAAAQAA==
+        776t3g3wrd7m2q89PHkmPaabxDsK16M8AAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAnNEHMwAAgD8AAAAAzcxMPQAAAAAAAAAAAAAAAAAAgD4AAAAAAAAAAAAAAAA=
+        AFByb2dyYW0gMQAQAAAA
+      >
+      FLOATPOS 0 0 0 0
+      FXID {D77726AD-F6A7-4CC4-A51F-54A8EA810F0D}
+      WAK 0 0
+      BYPASS 0 0 0
+      <VST "VST: ReaEQ (Cockos)" reaeq.dll 0 "" 1919247729<56535472656571726561657100000000> ""
+        cWVlcu5e7f4CAAAAAQAAAAAAAAACAAAAAAAAAAIAAAABAAAAAAAAAAIAAAAAAAAArAAAAAEAAAAAAAAA
+        IQAAAAQAAAAEAAAAAQAAAAAAAAAAAFRAAAAAAAAA8D8AAAAAAAAAQAACAAAAAQAAAAH9/sijO3pAf95+Ti6v8z+BlUOLbOfvPwACAAAAAQAAAAFtVHMZAZJA/x/TTFCT
+        5T8AAAAAAADwPwACAAAAAQAAAP8/3XZU46NAofWQ3fdL9z8BWmQ730/pPwABAAAAAQAAAAAAAAAAAPA/AAAAAPsCAAAXAgAAAgAAAA==
+        AHN0b2NrIC0gSW50aW1hdGUgZmVtYWxlIHZvY2FsAAAAAAA=
+      >
+      PRESETNAME "stock - Intimate female vocal"
+      FLOATPOS 0 0 0 0
+      FXID {EF3B2A82-7290-4698-B703-7926B1105E40}
+      WAK 0 0
+      BYPASS 0 0 0
+      <VIDEO_EFFECT "Video processor" ""
+        <CODE
+          |// Track opacity/zoom/pan
+          |//@param1:opacity 'opacity' 1
+          |//@param2:zoom 'zoom' 0 -10 10 0
+          |//@param3:xoffs 'X offset' 0 -1 1 0
+          |//@param4:yoffs 'Y offset' 0 -1 1 0
+          |//@param5:rotate 'rotate' 0 -360 360 0 1
+          |//@param7:filter 'filter' 0 0 1 0.5 1
+          |//@param8:clear 'clear bg' 1 0 1 0.5 1
+          |//@param9:force_w 'force width' 0 0 2600 1024 2
+          |//@param10:force_h 'force height' 0 0 2600 1024 2
+          |//@param11:paspect 'preserve aspect' 1 0 1 0.5 1
+          |
+          |(bg_img=input_ismaster() ? -2 : input_track(0)) ? (
+          |  force_w &= -2; force_h &= -2;
+          |  force_w && !force_h ? force_h = (force_w * project_h / project_w)&-2;
+          |  force_h && !force_w ? force_w = (force_h * project_w / project_h)&-2;
+          |  force_w>0 && force_h>0 ? ( project_w=force_w; project_h=force_h );
+          |
+          |  w = opacity < 0.01 ? 0 : opacity > 0.99 ? 1 : opacity;
+          |  gfx_a2=0;
+          |  gfx_blit((w < 1 || clear < 0.5) ? bg_img : -2,1);
+          |
+          |  w > 0 ? (
+          |    gfx_mode = filter>0.5 ? 256 : 0;
+          |    gfx_a=w;
+          |    z = 10^(zoom/10);
+          |    dw = (project_w*z)&-2;
+          |    dh = (project_h*z)&-2;
+          |    x = (project_w - dw + xoffs*(project_w+dw))*.5;
+          |    y = (project_h - dh + yoffs*(project_h+dh))*.5;
+          |    rotate == 0 ? gfx_blit(0,paspect, x|0,y|0,dw,dh) : (
+          |      input_info(0,srcw,srch);
+          |      sc=2.0; sc2=sc*.5 - 0.5;
+          |      gfx_rotoblit(0,rotate*$pi/180,(x-dw*sc2)|0,(y-dh*sc2)|0,dw*sc,dh*sc, -srcw*sc2, -srch*sc2, srcw*sc, srch*sc);
+          |    );
+          |  );
+          |);
+        >
+        CODEPARM 1 0 0 0 0 0 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+      >
+      PRESETNAME "Basic helpers: Track opacity/zoom/pan"
+      FLOATPOS 0 0 0 0
+      FXID {EE2ED8AF-645F-4E13-A200-F5177DAAC743}
+      WAK 0 0
+    >
+    <ITEM
+      POSITION 0
+      SNAPOFFS 0
+      LENGTH 2.45848729334043
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0.01 0 1 0 0 0
+      MUTE 0 0
+      SEL 1
+      IGUID {23BFF723-B5B0-4EBB-B3EC-E2145678C64F}
+      IID 36
+      NAME 01-230901_1433.wav
+      VOLPAN 1 0 5.917432 -1
+      SOFFS 0.24712255694717
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      TAKECOLOR 28818890 R
+      GUID {A9E2D136-D524-40D2-A6A6-2D3FD6E813A5}
+      RECPASS 35
+      <SOURCE WAVE
+        FILE "01-230901_1433.wav"
+      >
+    >
+  >
+>

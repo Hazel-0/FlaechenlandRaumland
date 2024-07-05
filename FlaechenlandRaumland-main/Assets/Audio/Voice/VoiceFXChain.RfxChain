@@ -1,0 +1,72 @@
+BYPASS 0 0
+<VST "VST: ReaGate (Cockos)" reagate.dll 0 "" 1919248244<56535472656774726561676174650000> ""
+  dGdlcu9e7f4EAAAAAQAAAAAAAAACAAAAAAAAAAQAAAAAAAAACAAAAAAAAAACAAAAAQAAAAAAAAACAAAAAAAAAFwAAAAAAAAAAAAQAA==
+  776t3g3wrd4eBp897Xo5O+TDHD0AAAAAAAAAAAAAgD8AAAAAAAAAAAAAAACc0QczAACAP5zRBzMAAIA/AAAAAAAAAAAAAAAALBYLPwAAAAAAAAAAAAAAAAAAAAA=
+  AAAQAAAA
+>
+FXID {CAD74BB7-9C42-416B-8312-BA0A2AA34EAE}
+WAK 0 0
+BYPASS 0 0
+<VST "VST: ReaComp (Cockos)" reacomp.dll 0 "" 1919247213<5653547265636D726561636F6D700000> ""
+  bWNlcu9e7f4EAAAAAQAAAAAAAAACAAAAAAAAAAQAAAAAAAAACAAAAAAAAAACAAAAAQAAAAAAAAACAAAAAAAAAFwAAAAAAAAAAAAQAA==
+  776t3g3wrd7m2q89PHkmPaabxDsK16M8AAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAnNEHMwAAgD8AAAAAzcxMPQAAAAAAAAAAAAAAAAAAgD4AAAAAAAAAAAAAAAA=
+  AFByb2dyYW0gMQAQAAAA
+>
+FXID {70A7EA09-4C95-46F2-B3B7-8C5D1E662EA4}
+WAK 0 0
+BYPASS 0 0
+<VST "VST: ReaEQ (Cockos)" reaeq.dll 0 "" 1919247729<56535472656571726561657100000000> ""
+  cWVlcu5e7f4CAAAAAQAAAAAAAAACAAAAAAAAAAIAAAABAAAAAAAAAAIAAAAAAAAArAAAAAEAAAAAAAAA
+  IQAAAAQAAAAEAAAAAQAAAAAAAAAAAFRAAAAAAAAA8D8AAAAAAAAAQAACAAAAAQAAAAH9/sijO3pAYt5+Ti6v8z/wlUOLbOfvPwACAAAAAQAAAAFtVHMZAZJA/x/TTFCT
+  5T8AAAAAAADwPwACAAAAAQAAAP8/3XZU46NAvvWQ3fdL9z8BWmQ730/pPwABAAAAAQAAAAAAAAAAAPA/AAAAAPsCAAAXAgAAAgAAAA==
+  AHN0b2NrIC0gSW50aW1hdGUgZmVtYWxlIHZvY2FsAAAAAAA=
+>
+FXID {7E4F168C-DF67-4DBB-843D-D0E45412F241}
+PRESETNAME "stock - Intimate female vocal"
+WAK 0 0
+BYPASS 0 0
+<VIDEO_EFFECT "Video processor" ""
+  <CODE
+    |// Track opacity/zoom/pan
+    |//@param1:opacity 'opacity' 1
+    |//@param2:zoom 'zoom' 0 -10 10 0
+    |//@param3:xoffs 'X offset' 0 -1 1 0
+    |//@param4:yoffs 'Y offset' 0 -1 1 0
+    |//@param5:rotate 'rotate' 0 -360 360 0 1
+    |//@param7:filter 'filter' 0 0 1 0.5 1
+    |//@param8:clear 'clear bg' 1 0 1 0.5 1
+    |//@param9:force_w 'force width' 0 0 2600 1024 2
+    |//@param10:force_h 'force height' 0 0 2600 1024 2
+    |//@param11:paspect 'preserve aspect' 1 0 1 0.5 1
+    |
+    |(bg_img=input_ismaster() ? -2 : input_track(0)) ? (
+    |  force_w &= -2; force_h &= -2;
+    |  force_w && !force_h ? force_h = (force_w * project_h / project_w)&-2;
+    |  force_h && !force_w ? force_w = (force_h * project_w / project_h)&-2;
+    |  force_w>0 && force_h>0 ? ( project_w=force_w; project_h=force_h );
+    |
+    |  w = opacity < 0.01 ? 0 : opacity > 0.99 ? 1 : opacity;
+    |  gfx_a2=0;
+    |  gfx_blit((w < 1 || clear < 0.5) ? bg_img : -2,1);
+    |
+    |  w > 0 ? (
+    |    gfx_mode = filter>0.5 ? 256 : 0;
+    |    gfx_a=w;
+    |    z = 10^(zoom/10);
+    |    dw = (project_w*z)&-2;
+    |    dh = (project_h*z)&-2;
+    |    x = (project_w - dw + xoffs*(project_w+dw))*.5;
+    |    y = (project_h - dh + yoffs*(project_h+dh))*.5;
+    |    rotate == 0 ? gfx_blit(0,paspect, x|0,y|0,dw,dh) : (
+    |      input_info(0,srcw,srch);
+    |      sc=2.0; sc2=sc*.5 - 0.5;
+    |      gfx_rotoblit(0,rotate*$pi/180,(x-dw*sc2)|0,(y-dh*sc2)|0,dw*sc,dh*sc, -srcw*sc2, -srch*sc2, srcw*sc, srch*sc);
+    |    );
+    |  );
+    |);
+  >
+  CODEPARM 1 0 0 0 0 0 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+>
+FXID {8E167BAA-5D62-416B-BE2D-D66CC8787DB7}
+PRESETNAME "Basic helpers: Track opacity/zoom/pan"
+WAK 0 0
