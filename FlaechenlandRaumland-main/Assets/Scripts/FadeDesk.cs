@@ -9,8 +9,6 @@ public class FadeDesk : MonoBehaviour
     private Material[] deskMaterials;
     [SerializeField]
     private Material[] flatlandMaterials;
-    private GameObject flatlandSurface;
-
     public bool fadeMaterials = false;
     public bool flatlandersAlive = false;
     public float fadeDuration = 3.0f;
@@ -22,9 +20,6 @@ public class FadeDesk : MonoBehaviour
     private float fadeTimer = 0.0f;
     void Start()
     {
-        flatlandSurface = GameObject.Find("Flatland");
-        flatlandSurface.SetActive(false);
-
         currentAlpha = startAlpha;
         for (int i = 0; i < deskMaterials.Length; i++)
         {
@@ -46,9 +41,7 @@ public class FadeDesk : MonoBehaviour
     {
         if (fadeMaterials)
         {
-            flatlandSurface.SetActive(true);
             FadeMaterials();
-            Debug.Log("Start Fade Materials");
         }
     }
 

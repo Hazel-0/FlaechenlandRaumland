@@ -11,19 +11,18 @@ public class QuestsChapter2 : MonoBehaviour {
     private GameObject[] audioClips;
 
     [SerializeField]
-    private GameObject[] grabCommands; //new
+    private GameObject[] grabCommands;
 
     [SerializeField]
     private GameObject[] objects2D;
     [SerializeField]
-    private GameObject[] objects3D; // called "objects in Jan's script"
+    private GameObject[] objects3D;
 
-    // below all new
-    private int objectIndex = 0; //new
-    private int heldObject = -1; //new
+    private int objectIndex = 0;
+    private int heldObject = -1;
 
     [SerializeField]
-    private GameObject screen; //new
+    private GameObject screen; 
 
     [SerializeField]
     private GameObject camera;
@@ -39,8 +38,6 @@ public class QuestsChapter2 : MonoBehaviour {
     private GameObject corner_min;
 
     private Vector3 offset;
-
-    // above all new
 
     // to play door + background audio
     private AudioSource backgroundMusic;
@@ -66,11 +63,10 @@ public class QuestsChapter2 : MonoBehaviour {
 
     void Start()
     {
-        offset = objects3D[objectIndex].transform.position - camera.transform.position; //neu
+        offset = objects3D[objectIndex].transform.position - camera.transform.position;
         foreach (GameObject obj in objects3D)
         {
             obj.GetComponent<XRGrabInteractable>().enabled = false;
-            //obj.GetComponent<Collider>().enabled = false;
         }
         AudioSetup();
         StartCoroutine(QuestLine());
@@ -88,7 +84,7 @@ public class QuestsChapter2 : MonoBehaviour {
     }
 
     IEnumerator QuestLine() {
-        screen.SetActive(false); //new
+        screen.SetActive(false);
         /** Initiation */
         // wait for 2 seconds, then close door
         yield return new WaitForSeconds(2.0f);
@@ -103,8 +99,6 @@ public class QuestsChapter2 : MonoBehaviour {
         yield return new WaitForSeconds(15.0f);
 
         objects3D[0].GetComponent<XRGrabInteractable>().enabled = true;
-
-        // new below here
 
         for (int i = 0; i < objects3D.Length; i++)
         {
@@ -153,65 +147,12 @@ public class QuestsChapter2 : MonoBehaviour {
             }
         }
 
-// new above here
 
 /** Zylinder greifen */
         audioClips[1].GetComponent<AudioSource>().Play();
-        yield return new WaitForSeconds(7.0f);
-
-
-        /* foreach (GameObject obj in objects3D)
-        {
-            obj.GetComponent<Collider>().enabled = true;
-            obj.GetComponent<XRGrabInteractable>().enabled = true;
-        }
-        while (cylinderNotGrabbed)
-        {
-            yield return null;
-        } */
-
-        // start fading desk, flatlanders become alive
-        /* foreach (GameObject obj in objects2D)
-        {
-            obj.GetComponent<Animator>().SetTrigger("StartWiggling");
-        }
-        fadeDesk.fadeMaterials = true; */
-        //yield return new WaitForSeconds(12.0f);
-
-        /** Querschnitt Zylinder **/
-
-        /* audioClips[2].GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(5.0f);
-
-        // flatlanders leave house to watch objects
-        foreach (GameObject obj in objects2D)
-        {
-            obj.GetComponent<Animator>().SetTrigger("LeaveHouse");
-        } */
-
-        // Achse erscheint, in der Kugel durch den Tisch bewegt werden solls
-
-        /*while (sortObjects) {
-            yield return null;
-        }
-        yield return new WaitForSeconds(1f);
-        audioClips[5].GetComponent<AudioSource>().Play();
-
-        yield return null; */
     }
 
-    /*public void AddCorrectObject(string id) {
-        if (!placedObjects.Contains(id)) {
-            placedObjects.Add(id);
-            correctPlacedObects++;
-            print(correctPlacedObects + " objects were placed correctly!");
-            if (correctPlacedObects >= 12) {
-                this.sortObjects = false;
-            }
-        }
-
-    }*/
-    //new below here
 
     private void activateObject(int index)
     {
@@ -266,12 +207,8 @@ if (!placedObjects.Contains(id)) {
     {
         heldObject = index;
     }
-
     public void DropObject(int index)
     {
         heldObject = -1;
     }
-
-    //new above here
-
 }
