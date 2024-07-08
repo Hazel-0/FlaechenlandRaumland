@@ -50,6 +50,13 @@ public class QuestsChapter2 : MonoBehaviour {
     // [SerializeField]
     private GameObject spotlight;
     private Light spotlight_light;
+    private SphereMovementAxis sphereMovementAxis;
+
+    private GameObject sphereMovementAxisObj;
+    public bool upperAxisTouched = false;
+    public bool lowerAxisTouched = false;
+    private bool sceneFinished = false;
+    private Flatland flatland;
 
     // könnte man gebrauchen um zu tracken wovon schon Querschnitt gemacht wurde
     //private bool sortObjects = true;
@@ -74,6 +81,10 @@ public class QuestsChapter2 : MonoBehaviour {
         spotlight = GameObject.Find("Spot Light"); // wird noch nicht benutzt (dimmen?)
         spotlight_light = spotlight.GetComponent<Light>(); // wird noch nicht benutzt (dimmen?)
         fadeDesk = GameObject.Find("Work_Desk").GetComponent<FadeDesk>();
+        sphereMovementAxisObj = GameObject.Find("SphereMovementAxis");
+        sphereMovementAxis = sphereMovementAxisObj.GetComponent<SphereMovementAxis>();
+        flatland = GameObject.Find("Flatland").GetComponent<Flatland>();
+        sphereMovementAxisObj.SetActive(true);
     }
 
     private void AudioSetup()
@@ -111,19 +122,16 @@ public class QuestsChapter2 : MonoBehaviour {
             {
                 // wait until object is picked up
                 yield return null;
-                Debug.Log("index for object 0 " + i);
+                // Debug.Log("index for object 0 " + i);
             }
             if (i == 0)
             {
+                yield return new WaitForSeconds(2.0f);
                 Debug.Log("Fade Desk");
                 // first object -> fade desk
                 fadeDesk.fadeMaterials = true;
                 screen.SetActive(true);
                 // yield return new WaitForSeconds(5.0f);
-
-                /** Querschnitt Zylinder **/
-                AudioSource audio = audioClips[1].GetComponent<AudioSource>();
-                audio.Play();
 
                 // flatlanders start wiggling
                 foreach (GameObject obj in objects2D)
@@ -132,14 +140,41 @@ public class QuestsChapter2 : MonoBehaviour {
                     Debug.Log("StartWiggling");
                 }
 
-                yield return new WaitForSeconds(audio.clip.length);
+                /** Querschnitt Zylinder **/
+                AudioSource audio = audioClips[1].GetComponent<AudioSource>();
+                audio.Play();
 
                 // flatlanders leave house to watch objects
                 foreach (GameObject obj in objects2D)
                 {
                     obj.GetComponent<Animator>().SetTrigger("LeaveHouse");
                 }
+
+                yield return new WaitForSeconds(16.0f);
+                audio = audioClips[2].GetComponent<AudioSource>(); // play drop information
+                audio.Play();
+
+
+                yield return new WaitForSeconds(audio.clip.length);
+
             }
+
+            if (i == 6) 
+            {
+                sphereMovementAxis.ActivateAxes();
+                // TODO Audio einfügen: Bewege die Kugel entland dieser Achse durch das Flächenland. Wie sieht der Querschnitt aus?
+                while (!upperAxisTouched) { yield return null; } //only continue if upper axis was touched
+                while (!lowerAxisTouched) { yield return null; } //only continue if lower axis was touched
+                Debug.Log("Chapter finished");
+            }
+
+            else if (i >= 1 && i < 6) {
+                yield return new WaitForSeconds(7.0f);
+                AudioSource audio = audioClips[2].GetComponent<AudioSource>(); // play drop information TODO: check if it works, record other track + exchange
+                audio.Play();
+            }
+
+
             while (heldObject != -1)
             {
                 // wait until object is dropped
@@ -147,10 +182,8 @@ public class QuestsChapter2 : MonoBehaviour {
             }
         }
 
-
-/** Zylinder greifen */
-        audioClips[1].GetComponent<AudioSource>().Play();
-        yield return new WaitForSeconds(5.0f);
+        Debug.Log("All 3D objects done"); // TODO prüfen ob das funktioniert
+        sceneFinished = true;
     }
 
 
@@ -166,7 +199,6 @@ public class QuestsChapter2 : MonoBehaviour {
         trackObject = true; // cross section cam tracks the object
         objectIndex = index;
     }
-
 
 /*public void AddCorrectObject(string id) {
 if (!placedObjects.Contains(id)) {
@@ -210,5 +242,15 @@ if (!placedObjects.Contains(id)) {
     public void DropObject(int index)
     {
         heldObject = -1;
+    }
+
+    private void OnTriggerEnter(Collider other) // Todo: das muss auf die Schale und trigger enter mit der Hand
+    {
+        if (other.tag == "plate" && sceneFinished)
+        {
+            flatland.Expand();
+            sphereMovementAxisObj.SetActive(false);
+            Debug.Log("change to next scene");
+        }
     }
 }

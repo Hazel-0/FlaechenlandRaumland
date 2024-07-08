@@ -12,7 +12,7 @@ public class Move2DObjects : MonoBehaviour
     {
         fadeDesk = GameObject.Find("Work_Desk").GetComponent<FadeDesk>();
         flatlanderEyes = GameObject.FindGameObjectsWithTag("Eye");
-        Debug.Log("Number of Eyes found" + flatlanderEyes.Length);
+        //Debug.Log("Number of Eyes found" + flatlanderEyes.Length);
         foreach (GameObject eye in flatlanderEyes)
         {
             if (eye != null)
