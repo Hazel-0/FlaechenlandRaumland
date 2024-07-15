@@ -45,6 +45,7 @@ public class QuestsChapter2 : MonoBehaviour {
 
     private FadeDesk fadeDesk;
     public bool cylinderNotGrabbed = true;
+    public float waitTillDropTime;
 
     // könnte man nutzen um Licht erst zu dimmen wenn die Tischplatte ausgeblendet wird
     // [SerializeField]
@@ -52,15 +53,17 @@ public class QuestsChapter2 : MonoBehaviour {
     private Light spotlight_light;
     private SphereMovementAxis sphereMovementAxis;
 
+    // für Kapitelende
     private GameObject sphereMovementAxisObj;
     public bool upperAxisTouched = false;
     public bool lowerAxisTouched = false;
     private bool sceneFinished = false;
+    private bool houseTouched = false;
     private Flatland flatland;
 
     // könnte man gebrauchen um zu tracken wovon schon Querschnitt gemacht wurde
     //private bool sortObjects = true;
-    //private int correctPlacedObects = 0;
+    //private int correctPlacedObjects = 0;
     //List<string> placedObjects = new List<string>();
 
     // könnte man gebrauchen um zu tracken wovon schon Querschnitt gemacht wurde
@@ -85,6 +88,9 @@ public class QuestsChapter2 : MonoBehaviour {
         sphereMovementAxis = sphereMovementAxisObj.GetComponent<SphereMovementAxis>();
         flatland = GameObject.Find("Flatland").GetComponent<Flatland>();
         sphereMovementAxisObj.SetActive(true);
+
+        // for debugging
+        // sphereMovementAxis.ActivateAxes();
     }
 
     private void AudioSetup()
@@ -96,7 +102,6 @@ public class QuestsChapter2 : MonoBehaviour {
 
     IEnumerator QuestLine() {
         screen.SetActive(false);
-        /** Initiation */
         // wait for 2 seconds, then close door
         yield return new WaitForSeconds(2.0f);
         doorClosesAudio.Play();
@@ -141,8 +146,8 @@ public class QuestsChapter2 : MonoBehaviour {
                 }
 
                 /** Querschnitt Zylinder **/
-                AudioSource audio = audioClips[1].GetComponent<AudioSource>();
-                audio.Play();
+                AudioSource audio1 = audioClips[1].GetComponent<AudioSource>();
+                audio1.Play();
 
                 // flatlanders leave house to watch objects
                 foreach (GameObject obj in objects2D)
@@ -151,27 +156,39 @@ public class QuestsChapter2 : MonoBehaviour {
                 }
 
                 yield return new WaitForSeconds(16.0f);
-                audio = audioClips[2].GetComponent<AudioSource>(); // play drop information
-                audio.Play();
+                AudioSource audio2 = audioClips[2].GetComponent<AudioSource>(); // play cylinder drop information
+                audio2.Play();
 
 
-                yield return new WaitForSeconds(audio.clip.length);
+                yield return new WaitForSeconds(audio2.clip.length);
 
             }
-
+sphereMovementAxis.ActivateAxes();
             if (i == 6) 
             {
-                sphereMovementAxis.ActivateAxes();
-                // TODO Audio einfügen: Bewege die Kugel entland dieser Achse durch das Flächenland. Wie sieht der Querschnitt aus?
-                while (!upperAxisTouched) { yield return null; } //only continue if upper axis was touched
-                while (!lowerAxisTouched) { yield return null; } //only continue if lower axis was touched
+                
+
+                // TODO Audio einfügen: Bewege die Kugel entlang dieser Achse durch das Flächenland. Wie sieht der Querschnitt aus?
+                AudioSource audio3 = audioClips[4].GetComponent<AudioSource>(); // play sphere axis information TODO: check if it works
+                audio3.Play();
+
+
+                /*
+                while (!upperAxisTouched) { yield return null; } //only continue if upper axis was touched TODO: Check if it works
+                while (!lowerAxisTouched) { yield return null; } //only continue if lower axis was touched TODO: Check if it works
                 Debug.Log("Chapter finished");
+
+                AudioSource audio = audioClips[5].GetComponent<AudioSource>(); // play flatland information TODO: check if it works
+                audio.Play();
+                Debug.Log("All 3D objects done"); // TODO prüfen ob das funktioniert
+                sceneFinished = true;
+                */
             }
 
             else if (i >= 1 && i < 6) {
-                yield return new WaitForSeconds(7.0f);
-                AudioSource audio = audioClips[2].GetComponent<AudioSource>(); // play drop information TODO: check if it works, record other track + exchange
-                audio.Play();
+                yield return new WaitForSeconds(waitTillDropTime);
+                AudioSource audio4 = audioClips[3].GetComponent<AudioSource>(); // play drop information TODO: check if it works
+                audio4.Play();
             }
 
 
@@ -181,9 +198,6 @@ public class QuestsChapter2 : MonoBehaviour {
                 yield return null;
             }
         }
-
-        Debug.Log("All 3D objects done"); // TODO prüfen ob das funktioniert
-        sceneFinished = true;
     }
 
 
@@ -226,6 +240,24 @@ if (!placedObjects.Contains(id)) {
         newPos.x = newX;
         newPos.z = newZ;
         camera.transform.position = newPos;
+
+        if (upperAxisTouched && lowerAxisTouched) // TODO prüfen ob das funktioniert
+        {
+            Debug.Log("Chapter finished");
+
+            AudioSource audio = audioClips[5].GetComponent<AudioSource>(); // play flatland information TODO: check if it works
+            audio.Play();
+            Debug.Log("All 3D objects done"); 
+            sceneFinished = true;
+        }
+
+        // finish scene
+        if (houseTouched && sceneFinished)
+            {
+                flatland.Expand();
+                sphereMovementAxisObj.SetActive(false);
+                Debug.Log("change to next scene");
+            }
     }
 
     private float playGrabCommand(int i)
@@ -244,13 +276,9 @@ if (!placedObjects.Contains(id)) {
         heldObject = -1;
     }
 
-    private void OnTriggerEnter(Collider other) // Todo: das muss auf die Schale und trigger enter mit der Hand
+    public void HouseTouched()
     {
-        if (other.tag == "plate" && sceneFinished)
-        {
-            flatland.Expand();
-            sphereMovementAxisObj.SetActive(false);
-            Debug.Log("change to next scene");
-        }
+        houseTouched = true;
     }
+
 }

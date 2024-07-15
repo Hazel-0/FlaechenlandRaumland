@@ -31,7 +31,7 @@ public class Move2DObjects : MonoBehaviour
                 if (eye != null)
                 {
                     eye.SetActive(true);
-                    Debug.Log("Set eye active " + eye);
+                    //Debug.Log("Set eye active " + eye);
                 }
             }
             StartMovingAround();
