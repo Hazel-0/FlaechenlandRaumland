@@ -88,9 +88,6 @@ public class QuestsChapter2 : MonoBehaviour {
         sphereMovementAxis = sphereMovementAxisObj.GetComponent<SphereMovementAxis>();
         flatland = GameObject.Find("Flatland").GetComponent<Flatland>();
         sphereMovementAxisObj.SetActive(true);
-
-        // for debugging
-        // sphereMovementAxis.ActivateAxes();
     }
 
     private void AudioSetup()
@@ -163,15 +160,13 @@ public class QuestsChapter2 : MonoBehaviour {
                 yield return new WaitForSeconds(audio2.clip.length);
 
             }
+
 sphereMovementAxis.ActivateAxes();
+
             if (i == 6) 
             {
-                
-
-                // TODO Audio einfügen: Bewege die Kugel entlang dieser Achse durch das Flächenland. Wie sieht der Querschnitt aus?
                 AudioSource audio3 = audioClips[4].GetComponent<AudioSource>(); // play sphere axis information TODO: check if it works
                 audio3.Play();
-
 
                 /*
                 while (!upperAxisTouched) { yield return null; } //only continue if upper axis was touched TODO: Check if it works
@@ -199,7 +194,6 @@ sphereMovementAxis.ActivateAxes();
             }
         }
     }
-
 
     private void activateObject(int index)
     {
