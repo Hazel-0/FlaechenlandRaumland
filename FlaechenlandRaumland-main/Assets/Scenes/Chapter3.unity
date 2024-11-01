@@ -333,7 +333,7 @@ GameObject:
   - component: {fileID: 45767967}
   - component: {fileID: 45767968}
   m_Layer: 0
-  m_Name: (12) Square_08 fehlt
+  m_Name: (12) Square_07
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -364,7 +364,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e395307ce01143a41b4bd42828e9ca11, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f40d7296e76ba404ea9e34680e788f7d, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.8
   m_Pitch: 1
@@ -751,7 +751,7 @@ GameObject:
   - component: {fileID: 97374460}
   - component: {fileID: 97374461}
   m_Layer: 0
-  m_Name: (03) Square_03
+  m_Name: (03) Square_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -782,7 +782,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 1f13029981db09f408f7d87ec351a647, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 48fe5ce103ec7e14d96ad3c885398c26, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.8
   m_Pitch: 1
@@ -1654,7 +1654,7 @@ GameObject:
   - component: {fileID: 458558343}
   - component: {fileID: 458558344}
   m_Layer: 0
-  m_Name: (04) Square_04
+  m_Name: (04) Square_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1685,7 +1685,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: edb70100d16505b43a226b1b8fa4d065, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 8d018a92ee444c749943b387660e0ee5, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.8
   m_Pitch: 1
@@ -2161,7 +2161,7 @@ GameObject:
   - component: {fileID: 581604045}
   - component: {fileID: 581604046}
   m_Layer: 0
-  m_Name: (01) Square_01
+  m_Name: (01) Square_00_singing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2192,7 +2192,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c0308a0866385cc478e00a98d2e0d142, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 7ee96e221f1f3e042b910c767b435e1d, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.8
   m_Pitch: 1
@@ -2527,7 +2527,7 @@ GameObject:
   - component: {fileID: 675778881}
   - component: {fileID: 675778882}
   m_Layer: 0
-  m_Name: (07) Square_05
+  m_Name: (07) Square_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2558,7 +2558,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 65c6d4b2e8d487a40bc0de21ea0082a7, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 617385a0044ab224684672bab6d0a6cd, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.8
   m_Pitch: 1
@@ -2673,7 +2673,7 @@ GameObject:
   - component: {fileID: 736540163}
   - component: {fileID: 736540164}
   m_Layer: 0
-  m_Name: (10) Square_07 fehlt
+  m_Name: (10) Square_06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2704,7 +2704,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e395307ce01143a41b4bd42828e9ca11, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 2e4f14dd6fe50324384424edc6f2c7dc, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.8
   m_Pitch: 1
@@ -3315,7 +3315,7 @@ GameObject:
   - component: {fileID: 913561812}
   - component: {fileID: 913561813}
   m_Layer: 0
-  m_Name: (02) Square_02
+  m_Name: (02) Square_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3346,7 +3346,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 8a00630a3c8c8f84fb9956f4dcc99ee9, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b1e935f8bd3fdfd43a627f828e38b79c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.8
   m_Pitch: 1
@@ -4169,7 +4169,7 @@ GameObject:
   - component: {fileID: 1285020973}
   - component: {fileID: 1285020974}
   m_Layer: 0
-  m_Name: (08) Square_06
+  m_Name: (08) Square_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4200,7 +4200,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e395307ce01143a41b4bd42828e9ca11, type: 3}
+  m_audioClip: {fileID: 8300000, guid: caa3b66573b97dd448b8e81d0c0b4686, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.8
   m_Pitch: 1
