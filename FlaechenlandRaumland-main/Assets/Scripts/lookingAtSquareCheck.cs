@@ -20,10 +20,12 @@ public class lookingAtSquareCheck : MonoBehaviour
         }
 
         // if first trigger HAS been triggered
-        else if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out RaycastHit hitInfo2, 20f) && questsChapter3.FirstTriggerDone())
+        
+        /*else if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out RaycastHit hitInfo2, 20f) && questsChapter3.FirstTriggerDone())
         {
             questsChapter3.StandingNearSquare();
-        }
-
+        }*/
     }
 }
+
+

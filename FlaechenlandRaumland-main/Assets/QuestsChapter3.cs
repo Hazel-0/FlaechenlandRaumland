@@ -2,14 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Device;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.XR;
+using UnityEngine.XR;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class QuestsChapter3 : MonoBehaviour
 {
     [SerializeField]
     private GameObject[] audioClips_Square;
+    [SerializeField]
     private GameObject[] audioClips_Triangle;
+    [SerializeField]
     private GameObject[] audioClips_Circle;
+    [SerializeField]
     private GameObject[] audioClips_Sphere;
+
+    private lookingAtSquareCheck lookingAtSquareCheck_script;
 
     public GameObject square;
     private Animator squareAnimator;
@@ -17,6 +26,8 @@ public class QuestsChapter3 : MonoBehaviour
     private Animator triangleAnimator;
     public GameObject circle;
     private Animator circleAnimator;
+    public GameObject sphere;
+    private Animator sphereAnimator;
 
     // to play door + background audio
     private AudioSource backgroundMusic;
@@ -27,14 +38,28 @@ public class QuestsChapter3 : MonoBehaviour
 
     private GameObject triggerObject;
 
+    // find XR controllers and input devices
+    private UnityEngine.XR.Interaction.Toolkit.ActionBasedController leftHandController;
+    private UnityEngine.XR.InputDevice leftInputDevice;
+
     void Start()
     {
         AudioSetup();
+
+        // Make sphere invisible
+        sphere.GetComponent<MeshRenderer>().enabled = false;    
+
         squareAnimator = square.GetComponent<Animator>();
         triangleAnimator = triangle.GetComponent<Animator>();
         circleAnimator = circle.GetComponent<Animator>();
-        triggerObject = GameObject.Find("Trigger_Squre");
+        sphereAnimator = sphere.GetComponent<Animator>();
+
+        triggerObject = GameObject.Find("Trigger_Square");
         triggerObject.SetActive(true);
+
+        // find script and disable to prevent instant triggering of square
+        lookingAtSquareCheck_script = GameObject.Find("Main Camera").GetComponent<lookingAtSquareCheck>();
+        lookingAtSquareCheck_script.enabled = false;
 
         StartCoroutine(QuestLine());
     }
@@ -51,29 +76,81 @@ public class QuestsChapter3 : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         backgroundMusic.Play();
         yield return new WaitForSeconds(2.0f);
+        audioClips_Square[0].GetComponent<AudioSource>().Play();
+        // make it possible to trigger square for turning around
+        yield return new WaitForSeconds(4.0f);
+        lookingAtSquareCheck_script.enabled = true;
+
+
+        // is set to true by SquareHit method (used by lookingAtSquareCheck on MainCamera)
         while (!lookingAtSquare)
         {
             yield return null;
         }
 
+        // Square stops singing
+        audioClips_Square[0].GetComponent<AudioSource>().Stop();
 
+        // Square turns around
+        yield return new WaitForSeconds(2.0f);
         squareAnimator.SetTrigger("TalkInside");
         triggerObject.SetActive(false);
 
-        // play first audio
-        // audioClipsSquare[0].GetComponent<AudioSource>().Play();
+        // starts talking
+        yield return new WaitForSeconds(3.0f);
+        audioClips_Square[1].GetComponent<AudioSource>().Play();
 
-        // squareAnimator.SetTrigger("GoOutside");
-        // yield return new WaitForSeconds(3.0f);
-        // triggerObject.SetActive(true);
+        // waits for joystick test
+        yield return new WaitForSeconds(16.0f);
+        squareAnimator.SetTrigger("WaitInside");
+        yield return new WaitForSeconds(6.0f);
 
-        // triggerObject.SetActive(false);
+        // continues talking
+        squareAnimator.SetTrigger("TalkInside");
+        audioClips_Square[2].GetComponent<AudioSource>().Play();
+        yield return new WaitForSeconds(8.0f);
+        squareAnimator.SetTrigger("WaitInside");
 
-        /*while (!standingNearSquare) { 
-            yield return null; 
-        }*/
+        // leaves house
+        yield return new WaitForSeconds(1.0f);
+        squareAnimator.SetTrigger("GoOutside");
 
-        // TODO trigger for other flatlanders coming out, keep talking
+        // triangle and circle join them
+        yield return new WaitForSeconds(5.0f);
+        triangleAnimator.SetTrigger("GoOutside");
+        circleAnimator.SetTrigger("GoOutside");
+
+       while (!standingNearSquare) { 
+            yield return null;
+            Debug.Log("Not near square");
+       }
+
+        Debug.Log("Standing near square");
+        // flatlanders talk
+        squareAnimator.SetTrigger("TalkOutside");
+        audioClips_Square[3].GetComponent<AudioSource>().Play();
+        yield return new WaitForSeconds(18.0f);
+        squareAnimator.SetTrigger("IdleOutside");
+
+        triangleAnimator.SetTrigger("TalkOutside");
+        audioClips_Triangle[0].GetComponent<AudioSource>().Play();
+        yield return new WaitForSeconds(5.0f);
+        triangleAnimator.SetTrigger("IdleOutside");
+
+        circleAnimator.SetTrigger("TalkOutside");
+        audioClips_Circle[0].GetComponent<AudioSource>().Play();
+        yield return new WaitForSeconds(15.0f);
+        circleAnimator.SetTrigger("IdleOutside");
+
+        squareAnimator.SetTrigger("TalkOutside");
+        audioClips_Square[4].GetComponent<AudioSource>().Play();
+        yield return new WaitForSeconds(3.0f);
+        squareAnimator.SetTrigger("IdleOutside");
+
+        Debug.Log("Sphere arrives" +
+            "+");
+
+        // Sphere transitions through flatland
 
     }
 

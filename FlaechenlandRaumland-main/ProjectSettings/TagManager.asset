@@ -22,6 +22,7 @@ TagManager:
   - bowl_l
   - AxisTracker
   - door handle
+  - Trigger_ContinueTalking
   layers:
   - Default
   - TransparentFX
