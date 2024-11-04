@@ -23,6 +23,7 @@ TagManager:
   - AxisTracker
   - door handle
   - Trigger_ContinueTalking
+  - Trigger_ChangeScene
   layers:
   - Default
   - TransparentFX

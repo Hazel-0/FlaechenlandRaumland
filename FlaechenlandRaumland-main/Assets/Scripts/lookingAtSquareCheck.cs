@@ -13,18 +13,11 @@ public class lookingAtSquareCheck : MonoBehaviour
 
     void Update()
     {
-        // if first trigger for turning around has NOT been triggered
+        // if trigger for turning around has NOT been triggered
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out RaycastHit hitInfo, 20f) && !questsChapter3.FirstTriggerDone())
         {
             questsChapter3.SquareHit();
         }
-
-        // if first trigger HAS been triggered
-        
-        /*else if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out RaycastHit hitInfo2, 20f) && questsChapter3.FirstTriggerDone())
-        {
-            questsChapter3.StandingNearSquare();
-        }*/
     }
 }
 

@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.Device;
 using UnityEngine.InputSystem;
@@ -35,6 +37,7 @@ public class QuestsChapter3 : MonoBehaviour
     // for triggering next action
     private bool lookingAtSquare = false;
     private bool standingNearSquare = false;
+    private bool playerDucking;
 
     private GameObject triggerObject;
 
@@ -47,7 +50,7 @@ public class QuestsChapter3 : MonoBehaviour
         AudioSetup();
 
         // Make sphere invisible
-        sphere.GetComponent<MeshRenderer>().enabled = false;    
+        sphere.SetActive(false);
 
         squareAnimator = square.GetComponent<Animator>();
         triangleAnimator = triangle.GetComponent<Animator>();
@@ -126,32 +129,95 @@ public class QuestsChapter3 : MonoBehaviour
        }
 
         Debug.Log("Standing near square");
-        // flatlanders talk
+        
+        // square talking
         squareAnimator.SetTrigger("TalkOutside");
         audioClips_Square[3].GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(18.0f);
         squareAnimator.SetTrigger("IdleOutside");
 
+        // triangle talking
         triangleAnimator.SetTrigger("TalkOutside");
         audioClips_Triangle[0].GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(5.0f);
         triangleAnimator.SetTrigger("IdleOutside");
 
+        // circle talking
         circleAnimator.SetTrigger("TalkOutside");
         audioClips_Circle[0].GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(15.0f);
         circleAnimator.SetTrigger("IdleOutside");
 
+        // Square talking
         squareAnimator.SetTrigger("TalkOutside");
         audioClips_Square[4].GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(3.0f);
         squareAnimator.SetTrigger("IdleOutside");
 
-        Debug.Log("Sphere arrives" +
-            "+");
-
         // Sphere transitions through flatland
+        sphere.SetActive(true);
+        sphereAnimator.SetTrigger("Transition");
+        audioClips_Sphere[0].GetComponent<AudioSource>().Play();
 
+        // Square talking
+        yield return new WaitForSeconds(2.0f);
+        squareAnimator.SetTrigger("TalkOutside");
+        audioClips_Square[5].GetComponent<AudioSource>().Play();
+        yield return new WaitForSeconds(4.0f);
+        squareAnimator.SetTrigger("IdleOutside");
+
+        // Sphere Talking
+        yield return new WaitForSeconds(4.0f);
+        sphereAnimator.SetTrigger("Talk");
+        audioClips_Sphere[1].GetComponent<AudioSource>().Play();
+        yield return new WaitForSeconds(7.0f);
+        sphereAnimator.SetTrigger("Wait");
+
+        // Square Talking
+        yield return new WaitForSeconds(2.0f);
+        squareAnimator.SetTrigger("TalkOutside");
+        audioClips_Square[6].GetComponent<AudioSource>().Play();
+        yield return new WaitForSeconds(7.0f);
+        squareAnimator.SetTrigger("IdleOutside");
+
+        // Sphere Talking
+        yield return new WaitForSeconds(2.0f);
+        sphereAnimator.SetTrigger("Talk");
+        audioClips_Sphere[2].GetComponent<AudioSource>().Play();
+        yield return new WaitForSeconds(13.0f);
+        sphereAnimator.SetTrigger("Wait");
+
+        // Square Talking
+        yield return new WaitForSeconds(2.0f);
+        squareAnimator.SetTrigger("TalkOutside");
+        audioClips_Square[7].GetComponent<AudioSource>().Play();
+        yield return new WaitForSeconds(11.0f);
+        squareAnimator.SetTrigger("IdleOutside");
+
+        // Sphere Talking
+        yield return new WaitForSeconds(2.0f);
+        sphereAnimator.SetTrigger("Talk");
+        audioClips_Sphere[3].GetComponent<AudioSource>().Play();
+        yield return new WaitForSeconds(13.0f);
+        sphereAnimator.SetTrigger("Leave");
+
+        WaitForPlayerDucking();
+
+        // Waiting for player to duck
+        while (!playerDucking)
+        {
+            yield return new WaitForSeconds(6.0f); ;
+            audioClips_Sphere[4].GetComponent<AudioSource>().Play();
+        }
+
+        yield return new WaitForSeconds(2.0f);
+        Debug.Log("scene finished");
+        // TODO: Implement Scene Transition - see Chapter1 Restart Game
+    }
+
+    public void WaitForPlayerDucking()
+    {
+        playerDucking = true;
     }
 
     public void SquareHit()

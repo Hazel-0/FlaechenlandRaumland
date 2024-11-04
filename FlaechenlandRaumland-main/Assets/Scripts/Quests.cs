@@ -75,18 +75,6 @@ public class Quests : MonoBehaviour {
         backgroundMusic.Stop();
     }
 
-    /** Audio Clips
-     *    0: Schau dich um
-     *    1: Gießkanne greifen
-      *   2: Giessen fertig
-     *    3: Glühbirne rausgefallen
-     *    4: Kugel berühren
-     *    5: Länge Breite Höhe
-     *    6: Dreidimensionaler Raum
-     *    7: Figuren anschauen
-     *    8: Figuren sortieren
-     *    9: Sortieren fertig TODO noch mal neu machen, durch Tür gehen für Szenenwechsel?
-     */
     IEnumerator QuestLine() {
         /** Initiation */
         // wait for 2 seconds, then close door
@@ -164,10 +152,7 @@ public class Quests : MonoBehaviour {
         yield return new WaitForSeconds(1f);
         audioClips[9].GetComponent<AudioSource>().Play();
 
-
-
         // restart.AllowRestart();
-        
 
         foreach (GameObject o in fadeOutObjects) {
             o.SetActive(false);
