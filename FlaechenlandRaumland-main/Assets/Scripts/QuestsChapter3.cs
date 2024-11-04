@@ -104,14 +104,14 @@ public class QuestsChapter3 : MonoBehaviour
         audioClips_Square[1].GetComponent<AudioSource>().Play();
 
         // waits for joystick test
-        yield return new WaitForSeconds(16.0f);
+        yield return new WaitForSeconds(17.5f);
         squareAnimator.SetTrigger("WaitInside");
-        yield return new WaitForSeconds(6.0f);
+        yield return new WaitForSeconds(5.0f);
 
         // continues talking
         squareAnimator.SetTrigger("TalkInside");
         audioClips_Square[2].GetComponent<AudioSource>().Play();
-        yield return new WaitForSeconds(8.0f);
+        yield return new WaitForSeconds(6.0f);
         squareAnimator.SetTrigger("WaitInside");
 
         // leaves house
@@ -137,22 +137,29 @@ public class QuestsChapter3 : MonoBehaviour
         squareAnimator.SetTrigger("IdleOutside");
 
         // triangle talking
+        yield return new WaitForSeconds(2.0f);
         triangleAnimator.SetTrigger("TalkOutside");
         audioClips_Triangle[0].GetComponent<AudioSource>().Play();
-        yield return new WaitForSeconds(5.0f);
+        yield return new WaitForSeconds(3.0f);
         triangleAnimator.SetTrigger("IdleOutside");
 
         // circle talking
+        yield return new WaitForSeconds(2.0f);
         circleAnimator.SetTrigger("TalkOutside");
         audioClips_Circle[0].GetComponent<AudioSource>().Play();
-        yield return new WaitForSeconds(15.0f);
+        yield return new WaitForSeconds(13.0f);
         circleAnimator.SetTrigger("IdleOutside");
 
         // Square talking
+        yield return new WaitForSeconds(1.0f);
         squareAnimator.SetTrigger("TalkOutside");
         audioClips_Square[4].GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(3.0f);
         squareAnimator.SetTrigger("IdleOutside");
+
+        // Triangle turns around
+        yield return new WaitForSeconds(2.0f);
+        triangleAnimator.SetTrigger("TurnAround");
 
         // Sphere transitions through flatland
         sphere.SetActive(true);
@@ -160,7 +167,7 @@ public class QuestsChapter3 : MonoBehaviour
         audioClips_Sphere[0].GetComponent<AudioSource>().Play();
 
         // Square talking
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(1.0f);
         squareAnimator.SetTrigger("TalkOutside");
         audioClips_Square[5].GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(4.0f);
@@ -174,32 +181,35 @@ public class QuestsChapter3 : MonoBehaviour
         sphereAnimator.SetTrigger("Wait");
 
         // Square Talking
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(1.0f);
         squareAnimator.SetTrigger("TalkOutside");
         audioClips_Square[6].GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(7.0f);
         squareAnimator.SetTrigger("IdleOutside");
 
         // Sphere Talking
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(1.0f);
         sphereAnimator.SetTrigger("Talk");
         audioClips_Sphere[2].GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(13.0f);
         sphereAnimator.SetTrigger("Wait");
 
         // Square Talking
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(1.0f);
         squareAnimator.SetTrigger("TalkOutside");
         audioClips_Square[7].GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(11.0f);
         squareAnimator.SetTrigger("IdleOutside");
 
         // Sphere Talking
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(1.0f);
         sphereAnimator.SetTrigger("Talk");
         audioClips_Sphere[3].GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(13.0f);
+        sphereAnimator.SetTrigger("Wait");
+        yield return new WaitForSeconds(2.0f);
         sphereAnimator.SetTrigger("Leave");
+        audioClips_Sphere[0].GetComponent<AudioSource>().Play();
 
         WaitForPlayerDucking();
 
