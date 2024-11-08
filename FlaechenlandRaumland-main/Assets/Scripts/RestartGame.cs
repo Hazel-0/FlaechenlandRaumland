@@ -31,8 +31,7 @@ public class RestartGame : MonoBehaviour
                 StartCoroutine(LoadAsyncScene());
                 initiated = true;
             }
-        }
-        
+        }  
     }
 
     public void AllowRestart() {

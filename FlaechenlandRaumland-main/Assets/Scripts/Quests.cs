@@ -33,6 +33,7 @@ public class Quests : MonoBehaviour {
     private Material lightbulb_on;
     [SerializeField]
     private Material lightbulb_off;
+    private Gluehbirne gluehbirne_script;
 
     public GameObject scripts;
     private RestartGame restart;
@@ -61,11 +62,14 @@ public class Quests : MonoBehaviour {
     {
         restart = scripts.GetComponent<RestartGame>();
         fadeOutFadeIn = scripts.GetComponent<FadeOutFadeIn>();
-        StartCoroutine(QuestLine());
+        AudioSetup();
         spotlight_light = spotlight.GetComponent<Light>();
         gluehbirne_rb = gluehbirne.GetComponent<Rigidbody>();
         lightbulb_on = gluehbirne_bulb.GetComponent<Renderer>().material;
-        AudioSetup();
+        gluehbirne_script = GameObject.Find("Lampholder").GetComponent<Gluehbirne>();
+        if (gluehbirne_script != null && gluehbirne_script.enabled == true)
+        { gluehbirne_script.enabled = false; }
+        StartCoroutine(QuestLine());
     }
 
     private void AudioSetup()
@@ -109,6 +113,8 @@ public class Quests : MonoBehaviour {
         gluehbirne_rb.constraints = RigidbodyConstraints.None;
         yield return new WaitForSeconds(1.0f);
         gluehbirnebereit = true;
+        // collider used for script Gluehbirne on lampholder: TODO: does it work?
+        gluehbirne_script.enabled = true;
 
         /** Glühbirne einsetzen **/
         audioClips[3].GetComponent<AudioSource>().Play();
@@ -120,7 +126,6 @@ public class Quests : MonoBehaviour {
         /** Glühbirne eingesetzt **/
         lichtWiederAn = true;
 
-        // TODO noch einbauen: Audio Clips 04-06 und Logik in Skript ShowCoordinateSystem auf sphere
         // TODO noch Debuggen: ScriptFadeOutFadeIn auf GameObject Scripts für alle Room Materials (siehe Array) 
         yield return new WaitForSeconds(1f);
         audioClips[4].GetComponent<AudioSource>().Play();
@@ -151,9 +156,11 @@ public class Quests : MonoBehaviour {
         /** Objekte sortiert **/
         yield return new WaitForSeconds(1f);
         audioClips[9].GetComponent<AudioSource>().Play();
+        yield return new WaitForSeconds (25f);
 
         // restart.AllowRestart();
 
+        // show restart / next scene menu
         foreach (GameObject o in fadeOutObjects) {
             o.SetActive(false);
         }
@@ -207,7 +214,5 @@ public class Quests : MonoBehaviour {
                 sortObjects = false;
             }
         }
-
     }
-
 }

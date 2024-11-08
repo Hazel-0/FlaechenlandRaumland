@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class Gluehbirne : MonoBehaviour {
 
-    public GameObject scripts;
-
     private Quests quests;
+
     void Start() {
-        quests = scripts.GetComponent<Quests>();
+        quests = GameObject.Find("Scripts").GetComponent<Quests>();
+        if (quests != null ) {
+            Debug.LogWarning("quests script not fount by Gluehbirne");
+        }
     }
 
     private void OnTriggerEnter(Collider other) {
-        Debug.LogWarning("Gewinde Trigger!");
-        Debug.LogWarning(other.tag);
+        Debug.LogWarning("Gewinde Trigger! " + other.tag);
         if (other.tag == "Lightbulb") {
             Debug.LogWarning("Glühbirne erkannt!");
             quests.GluehbirneFertig();

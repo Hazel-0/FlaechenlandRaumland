@@ -16,11 +16,11 @@ public class ShowCoordinateSystem : MonoBehaviour
     private bool kugelBeruehrt = false;
     private bool sphereReturns = false;
     private GameObject room;
+    [SerializeField]
     private AudioSource warblingAudio;
+    [SerializeField]
     private AudioSource roomWarpAudio;
-    //private bool compressArrowStarted = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         quests = GameObject.Find("Scripts").GetComponent<Quests>();
@@ -31,13 +31,10 @@ public class ShowCoordinateSystem : MonoBehaviour
         room = GameObject.Find("room");
         room.SetActive(true);
 
-        warblingAudio = GameObject.Find("WarblingAudio").GetComponent<AudioSource>();
-        StartCoroutine(WaitUntilReturn());
-
-        roomWarpAudio = GameObject.Find("Pop Sound").GetComponent<AudioSource>();
+        //StartCoroutine(WaitUntilReturn());
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Hand" && quests.lichtWiederAn && !kugelBeruehrt)
         {
@@ -45,7 +42,7 @@ public class ShowCoordinateSystem : MonoBehaviour
             animator.SetTrigger("MoveToOrigin");
             if (!soundPlayed1)
             {
-                warblingAudio.Play();
+                warblingAudio.GetComponent<AudioSource>().Play();
                 soundPlayed1 = true;
             }
             StartCoroutine(WaitUntilReturn());
@@ -54,36 +51,29 @@ public class ShowCoordinateSystem : MonoBehaviour
 
     private IEnumerator WaitUntilReturn()
     {
-        while (!kugelBeruehrt) {
-            yield return null;
-        }
+        room.SetActive(false);
+        roomWarpAudio.GetComponent<AudioSource>().Play();
+
         yield return new WaitForSeconds(5.0f);
         quests.PlayAudio(5);
 
-
-
-        coordinateSystem.SetActive(true);
-        yield return new WaitForSeconds(1.0f);
-        room.SetActive(false);
-        roomWarpAudio.Play();
         yield return new WaitForSeconds(4.0f);
+        coordinateSystem.SetActive(true);
+        yield return new WaitForSeconds(2.0f);
         quests.PlayAudio(6);
 
         SetCSTrigger("stretchArrow");
         yield return new WaitForSeconds(14.0f);
         animator.SetTrigger("MoveFromOriginToTable");
+        warblingAudio.GetComponent<AudioSource>().Play();
         SetCSTrigger("compressArrow");
-        if (!soundPlayed2)
-        {
-            warblingAudio.Play();
-            soundPlayed2 = true;
-        }
-        yield return new WaitForSeconds(6.0f);
+
+        yield return new WaitForSeconds(7.0f);
         coordinateSystem.SetActive(false);
         quests.KoodinatenSystemFertig();
 
         room.SetActive(true);
-        roomWarpAudio.Play();
+        roomWarpAudio.GetComponent<AudioSource>().Play();
 
         animator.enabled = false;
         yield return null;
@@ -98,6 +88,5 @@ public class ShowCoordinateSystem : MonoBehaviour
             coordinateSystemParts[i].GetComponent<Animator>().SetTrigger(triggerName);
             Debug.Log("Set Trigger " + triggerName);
         }
-        // audioSource = GameObject.Find("WarblingAudio").GetComponent<AudioSource>();
     }
 }
