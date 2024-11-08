@@ -68,7 +68,7 @@ public class Guardian : MonoBehaviour {
         }
         center /= 4.0f;
 
-        // wich edge is shorter (0 or 1)?
+        // which edge is shorter (0 or 1)?
         int edgeIndex = 1;
         if (edges[0].length < edges[1].length) {
             edgeIndex = 0;
@@ -82,8 +82,6 @@ public class Guardian : MonoBehaviour {
         // get the angle-difference between world_center and guardian_center and rotate world
         float angle = Vector3.SignedAngle(vRoom.direction, room.direction, Vector3.up);
         world.transform.RotateAround(vRoom.location, Vector3.up, -angle);
-
-
     }
 
     class Edge {

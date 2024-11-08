@@ -13,8 +13,6 @@ public class RestartGame : MonoBehaviour
     private bool initiated = false;
     private bool restartGame = false;
     private bool restartAllowed = false;
-
-
     private void OnEnable() {
         menuInputActionReference.Enable();
     }

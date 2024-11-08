@@ -4,17 +4,27 @@ using UnityEngine;
 
 public class FlatlanderHouse : MonoBehaviour
 {
-    void Start()
+    [SerializeField]
+    private SceneControl sceneControl;
+
+    private void Start()
     {
-        
+        if (sceneControl == null)
+        {
+            sceneControl = GameObject.Find("Scripts").GetComponent<SceneControl>();
+        }
+        if (sceneControl.enabled == true)
+        {
+            sceneControl.enabled = false;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.name == "GrabVolumeBig")
         {
-            // TODO: continue once axis tracking works
             Debug.Log("Grab volume entered house");
+            sceneControl.enabled = true;
         }
     }
 }

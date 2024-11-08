@@ -21,13 +21,4 @@ public class InsideTriggerCheck : MonoBehaviour
             Debug.Log("Trigger entered for Standing near square");
         }
     }
-    /*private void OnTriggerStay(Collider other)
-    {
-        Debug.Log("Trigger stay");
-        if (other.tag.Equals("Trigger_ContinueTalking"))
-        {
-            questsChapter3.StandingNearSquare();
-            Debug.Log("Trigger stay for Standing near square");
-        }
-    }*/
 }

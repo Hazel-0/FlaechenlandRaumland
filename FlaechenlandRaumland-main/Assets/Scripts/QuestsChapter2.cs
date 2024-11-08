@@ -49,27 +49,23 @@ public class QuestsChapter2 : MonoBehaviour {
 
     // könnte man nutzen um Licht erst zu dimmen wenn die Tischplatte ausgeblendet wird
     // [SerializeField]
-    private GameObject spotlight;
-    private Light spotlight_light;
+    //private GameObject spotlight;
+    //private Light spotlight_light;
     private SphereMovementAxis sphereMovementAxis;
 
+    // für Animation der Augen in Move2DObjects
+    public bool flatlandExpanding = false;
+    
     // für Kapitelende
+    [SerializeField]
+    private SceneControl sceneControlScript;
+
     private GameObject sphereMovementAxisObj;
     public bool upperAxisTouched = false;
     public bool lowerAxisTouched = false;
     private bool sceneFinished = false;
     private bool houseTouched = false;
     private Flatland flatland;
-
-    // könnte man gebrauchen um zu tracken wovon schon Querschnitt gemacht wurde
-    //private bool sortObjects = true;
-    //private int correctPlacedObjects = 0;
-    //List<string> placedObjects = new List<string>();
-
-    // könnte man gebrauchen um zu tracken wovon schon Querschnitt gemacht wurde
-    //private bool sortObjects = true;
-    //private int correctPlacedObjects = 0;
-    //List<string> placedObjects = new List<string>();
 
     void Start()
     {
@@ -81,8 +77,8 @@ public class QuestsChapter2 : MonoBehaviour {
         AudioSetup();
         StartCoroutine(QuestLine());
 
-        spotlight = GameObject.Find("Spot Light"); // wird noch nicht benutzt (dimmen?)
-        spotlight_light = spotlight.GetComponent<Light>(); // wird noch nicht benutzt (dimmen?)
+        //spotlight = GameObject.Find("Spot Light"); // wird noch nicht benutzt (dimmen?)
+        //spotlight_light = spotlight.GetComponent<Light>(); // wird noch nicht benutzt (dimmen?)
         fadeDesk = GameObject.Find("Work_Desk").GetComponent<FadeDesk>();
         sphereMovementAxisObj = GameObject.Find("SphereMovementAxis");
         sphereMovementAxis = sphereMovementAxisObj.GetComponent<SphereMovementAxis>();
@@ -116,24 +112,32 @@ public class QuestsChapter2 : MonoBehaviour {
         for (int i = 0; i < objects3D.Length; i++)
         {
             float waitTime = playGrabCommand(i);
-            // wait until command ends
+            // wait until audio ends
             yield return new WaitForSeconds(waitTime);
+
             // make object grabbable
-            activateObject(i);
+            ActivateObject(i);
+
+            // wait for cylinder to be grabbed
             while (heldObject != i)
             {
                 // wait until object is picked up
                 yield return null;
                 // Debug.Log("index for object 0 " + i);
             }
+
+            // first object grabbed: activate flatland
             if (i == 0)
             {
                 yield return new WaitForSeconds(2.0f);
                 Debug.Log("Fade Desk");
-                // first object -> fade desk
                 fadeDesk.fadeMaterials = true;
                 screen.SetActive(true);
-                // yield return new WaitForSeconds(5.0f);
+
+                // wait for Flatland to expand 
+                yield return new WaitForSeconds(3.0f);
+                flatland.Expand();
+                flatlandExpanding = true;
 
                 // flatlanders start wiggling
                 foreach (GameObject obj in objects2D)
@@ -142,7 +146,7 @@ public class QuestsChapter2 : MonoBehaviour {
                     Debug.Log("StartWiggling");
                 }
 
-                /** Querschnitt Zylinder **/
+                // explain cross-section with cylinder
                 AudioSource audio1 = audioClips[1].GetComponent<AudioSource>();
                 audio1.Play();
 
@@ -152,40 +156,34 @@ public class QuestsChapter2 : MonoBehaviour {
                     obj.GetComponent<Animator>().SetTrigger("LeaveHouse");
                 }
 
-                yield return new WaitForSeconds(16.0f);
+                sphereMovementAxis.ActivateAxes();
+
+                yield return new WaitForSeconds(20.0f);
                 AudioSource audio2 = audioClips[2].GetComponent<AudioSource>(); // play cylinder drop information
                 audio2.Play();
 
-
                 yield return new WaitForSeconds(audio2.clip.length);
-
             }
-
-sphereMovementAxis.ActivateAxes();
 
             if (i == 6) 
             {
-                AudioSource audio3 = audioClips[4].GetComponent<AudioSource>(); // play sphere axis information TODO: check if it works
+                AudioSource audio4 = audioClips[4].GetComponent<AudioSource>();
+                audio4.Play();
+
+                yield return new WaitForSeconds(waitTillDropTime + audio4.clip.length); // TODO: wird der Clip länger abgespielt?
+                AudioSource audio3 = audioClips[3].GetComponent<AudioSource>();
                 audio3.Play();
 
-                /*
-                while (!upperAxisTouched) { yield return null; } //only continue if upper axis was touched TODO: Check if it works
-                while (!lowerAxisTouched) { yield return null; } //only continue if lower axis was touched TODO: Check if it works
-                Debug.Log("Chapter finished");
-
-                AudioSource audio = audioClips[5].GetComponent<AudioSource>(); // play flatland information TODO: check if it works
-                audio.Play();
-                Debug.Log("All 3D objects done"); // TODO prüfen ob das funktioniert
-                sceneFinished = true;
-                */
+                while (!upperAxisTouched) { yield return null; }
+                while (!lowerAxisTouched) { yield return null; }
+                Debug.Log("Both axis touched");
             }
 
             else if (i >= 1 && i < 6) {
                 yield return new WaitForSeconds(waitTillDropTime);
-                AudioSource audio4 = audioClips[3].GetComponent<AudioSource>(); // play drop information TODO: check if it works
-                audio4.Play();
+                AudioSource audio3 = audioClips[3].GetComponent<AudioSource>(); 
+                audio3.Play();
             }
-
 
             while (heldObject != -1)
             {
@@ -193,9 +191,31 @@ sphereMovementAxis.ActivateAxes();
                 yield return null;
             }
         }
+
+        while (!sceneFinished)
+        {
+            yield return null;
+            Debug.Log("Scene not yet finished");
+        }
+
+        Debug.Log("Audio: Ins Flächenland");
+        AudioSource audio5 = audioClips[5].GetComponent<AudioSource>();
+        audio5.Play();
+        Debug.Log("All 3D objects done");
+
+        // if house was touched
+        while (!houseTouched)
+        {
+            yield return null;
+        }
+
+        sphereMovementAxisObj.SetActive(false);
+        Debug.Log("change to next scene");
+        yield return new WaitForSeconds(3.0f);
+        sceneControlScript.enabled = true;
     }
 
-    private void activateObject(int index)
+    private void ActivateObject(int index)
     {
         if (index > 0)
         {
@@ -208,16 +228,6 @@ sphereMovementAxis.ActivateAxes();
         objectIndex = index;
     }
 
-/*public void AddCorrectObject(string id) {
-if (!placedObjects.Contains(id)) {
-    placedObjects.Add(id);
-    correctPlacedObects++;
-    print(correctPlacedObects + " objects were placed correctly!");
-    if (correctPlacedObects >= 12) {
-        this.sortObjects = false;
-    }
-}
-}*/
     private void Update()
     {
         Vector3 newPos = camera.transform.position;
@@ -234,24 +244,6 @@ if (!placedObjects.Contains(id)) {
         newPos.x = newX;
         newPos.z = newZ;
         camera.transform.position = newPos;
-
-        if (upperAxisTouched && lowerAxisTouched) // TODO prüfen ob das funktioniert
-        {
-            Debug.Log("Chapter finished");
-
-            AudioSource audio = audioClips[5].GetComponent<AudioSource>(); // play flatland information TODO: check if it works
-            audio.Play();
-            Debug.Log("All 3D objects done"); 
-            sceneFinished = true;
-        }
-
-        // finish scene
-        if (houseTouched && sceneFinished)
-            {
-                flatland.Expand();
-                sphereMovementAxisObj.SetActive(false);
-                Debug.Log("change to next scene");
-            }
     }
 
     private float playGrabCommand(int i)
@@ -270,9 +262,22 @@ if (!placedObjects.Contains(id)) {
         heldObject = -1;
     }
 
+    public void UpperAxisTouched()
+    {
+        upperAxisTouched = true;
+    }
+    public void LowerAxisTouched()
+    {
+        if (upperAxisTouched) {
+            lowerAxisTouched = true;
+            sceneFinished = true;
+        }
+    }
     public void HouseTouched()
     {
-        houseTouched = true;
+        if (upperAxisTouched && lowerAxisTouched)
+        {
+            houseTouched = true;
+        }
     }
-
 }

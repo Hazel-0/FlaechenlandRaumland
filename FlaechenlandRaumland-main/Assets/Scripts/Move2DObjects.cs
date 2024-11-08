@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class Move2DObjects : MonoBehaviour
 {
-    private FadeDesk fadeDesk;
+    private QuestsChapter2 questsChapter2_script;
     [SerializeField] public GameObject[] flatlanders;
     [SerializeField] public GameObject[] flatlanderEyes;
     void Start()
     {
-        fadeDesk = GameObject.Find("Work_Desk").GetComponent<FadeDesk>();
+        questsChapter2_script = GameObject.Find("Scripts").GetComponent<QuestsChapter2>();
         flatlanderEyes = GameObject.FindGameObjectsWithTag("Eye");
         //Debug.Log("Number of Eyes found" + flatlanderEyes.Length);
         foreach (GameObject eye in flatlanderEyes)
@@ -24,23 +24,15 @@ public class Move2DObjects : MonoBehaviour
 
     void Update()
     {
-        if (fadeDesk.flatlandersAlive)
+        if (questsChapter2_script.flatlandExpanding)
         {
             foreach (GameObject eye in flatlanderEyes)
             {
                 if (eye != null)
                 {
                     eye.SetActive(true);
-                    //Debug.Log("Set eye active " + eye);
                 }
             }
-            StartMovingAround();
         }
-    }
-
-    private void StartMovingAround()
-    {
-        // führe leichte Bewegungen im Haus aus wie Unterhaltung, evtl. Textur auf Augen und damit Blickrichtung ändern?
-        // throw new NotImplementedException();
     }
 }

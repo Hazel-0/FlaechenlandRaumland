@@ -62,7 +62,7 @@ public class Quests_Intro : MonoBehaviour {
             yield return kugelRespawnen = true;  
             yield return new WaitForSeconds(0.01f);
             yield return kugelRespawnen = false;
-            yield return new WaitForSeconds(10.0f);
+            yield return new WaitForSeconds(8.0f);
         }
         audioClips[3].GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(10.0f);
@@ -84,5 +84,4 @@ public class Quests_Intro : MonoBehaviour {
         weiterGedrueckt = true;
         Debug.Log("weiter gedrückt" + weiterGedrueckt);
     }
-
 }

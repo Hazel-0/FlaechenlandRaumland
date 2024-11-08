@@ -24,6 +24,9 @@ TagManager:
   - door handle
   - Trigger_ContinueTalking
   - Trigger_ChangeScene
+  - Trigger_Hypersphere
+  - AxisUp
+  - AxisDown
   layers:
   - Default
   - TransparentFX

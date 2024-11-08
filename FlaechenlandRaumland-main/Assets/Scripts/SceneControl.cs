@@ -12,6 +12,8 @@ public class SceneControl : MonoBehaviour {
         Physics.IgnoreCollision(sphere.GetComponent<Collider>(), GetComponent<Collider>());
     }
 
+    // Executed once when script is activated by Sphere > XR Grab Interactable 
+    // then initiated is set to false
     private void Update() {
         if (!initiated) {
             StartCoroutine(LoadAsyncScene());
