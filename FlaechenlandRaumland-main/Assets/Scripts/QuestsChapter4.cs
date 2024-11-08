@@ -19,6 +19,10 @@ public class QuestsChapter4 : MonoBehaviour
     private AudioSource backgroundMusic;
     private AudioSource doorClosesAudio;
 
+    // für Kapitelende
+    [SerializeField]
+    private SceneControl sceneControlScript;
+
     void Start()
     {
         triggerHypersphere = GameObject.Find("Trigger_Hypersphere");
@@ -63,6 +67,10 @@ public class QuestsChapter4 : MonoBehaviour
         // sphere talking
         yield return new WaitForSeconds(15.0f);
         audioClips[1].GetComponent<AudioSource>().Play();
+
+        // end scene
+        yield return new WaitForSeconds(20.0f);
+        sceneControlScript.enabled = true;
     }
 
     public void LookingAtDoor()

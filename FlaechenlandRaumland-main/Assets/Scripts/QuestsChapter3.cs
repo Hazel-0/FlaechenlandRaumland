@@ -41,9 +41,9 @@ public class QuestsChapter3 : MonoBehaviour
 
     private GameObject triggerObject;
 
-    // find XR controllers and input devices
-    private UnityEngine.XR.Interaction.Toolkit.ActionBasedController leftHandController;
-    private UnityEngine.XR.InputDevice leftInputDevice;
+    // für Kapitelende
+    [SerializeField]
+    private SceneControl sceneControlScript;
 
     void Start()
     {
@@ -220,9 +220,9 @@ public class QuestsChapter3 : MonoBehaviour
             audioClips_Sphere[4].GetComponent<AudioSource>().Play();
         }
 
-        yield return new WaitForSeconds(2.0f);
         Debug.Log("scene finished");
-        // TODO: Implement Scene Transition - see Chapter1 Restart Game
+        yield return new WaitForSeconds(2.0f);
+        sceneControlScript.enabled = true;
     }
 
     public void WaitForPlayerDucking()

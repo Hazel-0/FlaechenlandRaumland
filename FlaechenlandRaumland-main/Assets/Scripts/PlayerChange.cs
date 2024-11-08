@@ -45,7 +45,7 @@ public class PlayerChange : MonoBehaviour {
 
             int y = SceneManager.GetActiveScene().buildIndex;
 
-            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(y + 1);
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(3);
         }
         yield return null;
     }
