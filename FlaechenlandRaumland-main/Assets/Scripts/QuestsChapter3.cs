@@ -37,7 +37,8 @@ public class QuestsChapter3 : MonoBehaviour
     // for triggering next action
     private bool lookingAtSquare = false;
     private bool standingNearSquare = false;
-    private bool playerDucking;
+    private bool playerDucking = false;
+    public bool readyToDuck = false;
 
     private GameObject triggerObject;
 
@@ -211,7 +212,8 @@ public class QuestsChapter3 : MonoBehaviour
         sphereAnimator.SetTrigger("Leave");
         audioClips_Sphere[0].GetComponent<AudioSource>().Play();
 
-        WaitForPlayerDucking();
+        // WaitForPlayerDucking();
+        readyToDuck = true;
 
         // Waiting for player to duck
         while (!playerDucking)
@@ -225,7 +227,7 @@ public class QuestsChapter3 : MonoBehaviour
         sceneControlScript.enabled = true;
     }
 
-    public void WaitForPlayerDucking()
+    public void PlayerIsDucking()
     {
         playerDucking = true;
     }

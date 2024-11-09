@@ -156,7 +156,6 @@ public class QuestsChapter2 : MonoBehaviour {
                     obj.GetComponent<Animator>().SetTrigger("LeaveHouse");
                 }
 
-                sphereMovementAxis.ActivateAxes();
 
                 yield return new WaitForSeconds(20.0f);
                 AudioSource audio2 = audioClips[2].GetComponent<AudioSource>(); // play cylinder drop information
@@ -165,14 +164,19 @@ public class QuestsChapter2 : MonoBehaviour {
                 yield return new WaitForSeconds(audio2.clip.length);
             }
 
+            // sphere cross-section
             if (i == 6) 
             {
                 AudioSource audio4 = audioClips[4].GetComponent<AudioSource>();
                 audio4.Play();
 
-                yield return new WaitForSeconds(waitTillDropTime + audio4.clip.length); // TODO: wird der Clip länger abgespielt?
+                sphereMovementAxis.ActivateAxes();
+
+                // Play drop hint
+                yield return new WaitForSeconds(waitTillDropTime + audio4.clip.length);
                 AudioSource audio3 = audioClips[3].GetComponent<AudioSource>();
                 audio3.Play();
+
 
                 while (!upperAxisTouched) { yield return null; }
                 while (!lowerAxisTouched) { yield return null; }

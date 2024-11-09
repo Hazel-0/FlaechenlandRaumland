@@ -11,10 +11,9 @@ public class PlayerDucking : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Trigger 'Player ducking' enter");
-        if (other.tag.Equals("Trigger_ChangeScene"))
+        if (other.tag.Equals("Trigger_ChangeScene")  && questsChapter3.readyToDuck)
         {
-            questsChapter3.WaitForPlayerDucking();
+            questsChapter3.PlayerIsDucking();
             Debug.Log("Trigger entered for Changing scene");
         }
     }
