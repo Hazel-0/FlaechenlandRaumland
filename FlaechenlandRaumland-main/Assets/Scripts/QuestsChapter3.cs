@@ -38,13 +38,15 @@ public class QuestsChapter3 : MonoBehaviour
     private bool lookingAtSquare = false;
     private bool standingNearSquare = false;
     private bool playerDucking = false;
-    public bool readyToDuck = false;
+    //public bool readyToDuck = false;
 
     private GameObject triggerObject;
 
     // für Kapitelende
     [SerializeField]
     private SceneControl sceneControlScript;
+    [SerializeField]
+    private GameObject trigger_changeScene;
 
     void Start()
     {
@@ -64,6 +66,15 @@ public class QuestsChapter3 : MonoBehaviour
         // find script and disable to prevent instant triggering of square
         lookingAtSquareCheck_script = GameObject.Find("Main Camera").GetComponent<lookingAtSquareCheck>();
         lookingAtSquareCheck_script.enabled = false;
+
+
+        // TODO used for debugging
+
+        trigger_changeScene.SetActive(false);
+        if (sceneControlScript == null)
+        {
+            Debug.LogError("no scene control script found");
+        }
 
         StartCoroutine(QuestLine());
     }
@@ -213,7 +224,10 @@ public class QuestsChapter3 : MonoBehaviour
         audioClips_Sphere[0].GetComponent<AudioSource>().Play();
 
         // WaitForPlayerDucking();
-        readyToDuck = true;
+        //readyToDuck = true;
+        //Debug.Log("Ready to duck");
+
+        trigger_changeScene.SetActive(true);
 
         // Waiting for player to duck
         while (!playerDucking)
