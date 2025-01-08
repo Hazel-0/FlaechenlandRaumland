@@ -44,6 +44,7 @@ public class QuestsChapter2 : MonoBehaviour {
     private AudioSource doorClosesAudio;
 
     private FadeDesk fadeDesk;
+    private FlatlanderHouse flatlanderHouse;
     public bool cylinderNotGrabbed = true;
     public float waitTillDropTime;
 
@@ -80,6 +81,7 @@ public class QuestsChapter2 : MonoBehaviour {
         //spotlight = GameObject.Find("Spot Light"); // wird noch nicht benutzt (dimmen?)
         //spotlight_light = spotlight.GetComponent<Light>(); // wird noch nicht benutzt (dimmen?)
         fadeDesk = GameObject.Find("Work_Desk").GetComponent<FadeDesk>();
+        flatlanderHouse = GameObject.Find("hexagonal_house").GetComponent<FlatlanderHouse>();
         sphereMovementAxisObj = GameObject.Find("SphereMovementAxis");
         sphereMovementAxis = sphereMovementAxisObj.GetComponent<SphereMovementAxis>();
         flatland = GameObject.Find("Flatland").GetComponent<Flatland>();
@@ -205,6 +207,9 @@ public class QuestsChapter2 : MonoBehaviour {
         Debug.Log("Audio: Ins Flächenland");
         AudioSource audio5 = audioClips[5].GetComponent<AudioSource>();
         audio5.Play();
+
+        // activate touching Flatlander House for scene change
+        flatlanderHouse.ActivateSceneChange();
         Debug.Log("All 3D objects done");
 
         // if house was touched
@@ -254,7 +259,7 @@ public class QuestsChapter2 : MonoBehaviour {
     {
         AudioSource audio = grabCommands[i].GetComponent<AudioSource>();
         audio.Play();
-        return audio.clip.length;
+        return audio.clip.length - 2.8f;
     }
 
     public void HoldObject(int index)
