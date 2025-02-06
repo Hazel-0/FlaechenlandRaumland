@@ -3547,6 +3547,7 @@ GameObject:
   - component: {fileID: 2079875000}
   - component: {fileID: 2079875003}
   - component: {fileID: 2079875004}
+  - component: {fileID: 2079875005}
   m_Layer: 0
   m_Name: Scripts
   m_TagString: GameManager
@@ -3618,6 +3619,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 648642496}
+--- !u!65 &2079875005
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2079874999}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2112286509
 GameObject:
   m_ObjectHideFlags: 0
@@ -5914,7 +5928,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3416826150825392272}
   - component: {fileID: 3416826150825392273}
-  - component: {fileID: 3416826150825392280}
   m_Layer: 0
   m_Name: Spot Light
   m_TagString: Light
@@ -5922,18 +5935,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &3416826150825392280
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3416826150825392279}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!33 &3469287837914857671
 MeshFilter:
   m_ObjectHideFlags: 0

@@ -10,8 +10,7 @@ public class QuestsChapter2 : MonoBehaviour {
     [SerializeField]
     private GameObject[] audioClips;
 
-    [SerializeField]
-    private GameObject[] grabCommands;
+
 
     [SerializeField]
     private GameObject[] objects2D;
@@ -30,7 +29,7 @@ public class QuestsChapter2 : MonoBehaviour {
     private GameObject cameraPlane;
     private Plane plane;
 
-    private bool trackObject;
+    //private bool trackObject;
 
     [SerializeField]
     private GameObject corner_max;
@@ -38,6 +37,13 @@ public class QuestsChapter2 : MonoBehaviour {
     private GameObject corner_min;
 
     private Vector3 offset;
+
+    private int lastObjectHeld = -1;
+
+    [SerializeField]
+    private GameObject[] grabCommands;
+
+    private AudioSource audioGrab;
 
     // to play door + background audio
     private AudioSource backgroundMusic;
@@ -68,12 +74,23 @@ public class QuestsChapter2 : MonoBehaviour {
     private bool houseTouched = false;
     private Flatland flatland;
 
+    // Audio sources
+    private AudioSource audio1;
+    private AudioSource audio2;
+    private AudioSource audio3_dropCommand;
+    private AudioSource audio4;
+    private AudioSource audio5;
+
+
     void Start()
     {
         offset = objects3D[objectIndex].transform.position - camera.transform.position;
         foreach (GameObject obj in objects3D)
         {
             obj.GetComponent<XRGrabInteractable>().enabled = false;
+            obj.GetComponent<Collider>().enabled = true;
+            obj.GetComponent<Collider>().isTrigger = false;
+            obj.GetComponent<MeshRenderer>().enabled = true;
         }
         AudioSetup();
         StartCoroutine(QuestLine());
@@ -86,6 +103,7 @@ public class QuestsChapter2 : MonoBehaviour {
         sphereMovementAxis = sphereMovementAxisObj.GetComponent<SphereMovementAxis>();
         flatland = GameObject.Find("Flatland").GetComponent<Flatland>();
         sphereMovementAxisObj.SetActive(true);
+        audio3_dropCommand = audioClips[3].GetComponent<AudioSource>();
     }
 
     private void AudioSetup()
@@ -131,6 +149,8 @@ public class QuestsChapter2 : MonoBehaviour {
             // first object grabbed: activate flatland
             if (i == 0)
             {
+                setLastHeldObjectVar(i);
+
                 yield return new WaitForSeconds(2.0f);
                 Debug.Log("Fade Desk");
                 fadeDesk.fadeMaterials = true;
@@ -149,7 +169,7 @@ public class QuestsChapter2 : MonoBehaviour {
                 }
 
                 // explain cross-section with cylinder
-                AudioSource audio1 = audioClips[1].GetComponent<AudioSource>();
+                audio1 = audioClips[1].GetComponent<AudioSource>();
                 audio1.Play();
 
                 // flatlanders leave house to watch objects
@@ -160,24 +180,33 @@ public class QuestsChapter2 : MonoBehaviour {
 
 
                 yield return new WaitForSeconds(20.0f);
-                AudioSource audio2 = audioClips[2].GetComponent<AudioSource>(); // play cylinder drop information
+                audio2 = audioClips[2].GetComponent<AudioSource>(); // play cylinder drop information
                 audio2.Play();
 
                 yield return new WaitForSeconds(audio2.clip.length);
+
             }
 
             // sphere cross-section
-            if (i == 6) 
+            if (i == 6)
             {
-                AudioSource audio4 = audioClips[4].GetComponent<AudioSource>();
+                // make last object dropped invisible
+                objects3D[lastObjectHeld].GetComponent<Collider>().isTrigger = true;
+                objects3D[lastObjectHeld].GetComponent<MeshRenderer>().enabled = false;
+
+                setLastHeldObjectVar(i);
+
+                audio4 = audioClips[4].GetComponent<AudioSource>();
                 audio4.Play();
 
                 sphereMovementAxis.ActivateAxes();
 
-                // Play drop hint
-                yield return new WaitForSeconds(waitTillDropTime + audio4.clip.length);
-                AudioSource audio3 = audioClips[3].GetComponent<AudioSource>();
-                audio3.Play();
+                // play drop hint only if no other clip is playing, else skip
+                if (!audioGrab.isPlaying)
+                {
+                    yield return new WaitForSeconds(waitTillDropTime + audio4.clip.length);
+                    audio3_dropCommand.Play();
+                }
 
 
                 while (!upperAxisTouched) { yield return null; }
@@ -186,9 +215,16 @@ public class QuestsChapter2 : MonoBehaviour {
             }
 
             else if (i >= 1 && i < 6) {
+                // make last object dropped invisible
+                objects3D[lastObjectHeld].GetComponent<Collider>().isTrigger = true;
+                objects3D[lastObjectHeld].GetComponent<MeshRenderer>().enabled = false;
+
+                setLastHeldObjectVar(i);
                 yield return new WaitForSeconds(waitTillDropTime);
-                AudioSource audio3 = audioClips[3].GetComponent<AudioSource>(); 
-                audio3.Play();
+                // play drop hint only if no other clip is playing, else skip
+                if (!audioGrab.isPlaying) {
+                    audio3_dropCommand.Play();
+                }
             }
 
             while (heldObject != -1)
@@ -205,7 +241,7 @@ public class QuestsChapter2 : MonoBehaviour {
         }
 
         Debug.Log("Audio: Ins Flächenland");
-        AudioSource audio5 = audioClips[5].GetComponent<AudioSource>();
+        audio5 = audioClips[5].GetComponent<AudioSource>();
         audio5.Play();
 
         // activate touching Flatlander House for scene change
@@ -224,6 +260,13 @@ public class QuestsChapter2 : MonoBehaviour {
         sceneControlScript.enabled = true;
     }
 
+    private void setLastHeldObjectVar(int i)
+    {
+        // write to variable so it can be used to deactivate collider 
+        lastObjectHeld = i;
+        Debug.Log("last object held" + lastObjectHeld);
+    }
+
     private void ActivateObject(int index)
     {
         if (index > 0)
@@ -233,7 +276,7 @@ public class QuestsChapter2 : MonoBehaviour {
         }
         objects3D[index].GetComponent<XRGrabInteractable>().enabled = true;
 
-        trackObject = true; // cross section cam tracks the object
+        //trackObject = true; // cross section cam tracks the object
         objectIndex = index;
     }
 
@@ -257,10 +300,12 @@ public class QuestsChapter2 : MonoBehaviour {
 
     private float playGrabCommand(int i)
     {
-        AudioSource audio = grabCommands[i].GetComponent<AudioSource>();
-        audio.Play();
-        return audio.clip.length - 2.8f;
+        audioGrab = grabCommands[i].GetComponent<AudioSource>();
+        audioGrab.Play();
+        return audioGrab.clip.length - 2.8f;
     }
+
+
 
     public void HoldObject(int index)
     {

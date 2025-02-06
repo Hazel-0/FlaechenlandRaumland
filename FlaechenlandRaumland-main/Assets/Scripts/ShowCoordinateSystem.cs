@@ -12,7 +12,7 @@ public class ShowCoordinateSystem : MonoBehaviour
     private GameObject[] coordinateSystemParts;
 
     private bool soundPlayed1 = false;
-    private bool soundPlayed2 = false;
+    //private bool soundPlayed2 = false;
     private bool kugelBeruehrt = false;
     private bool sphereReturns = false;
     private GameObject room;

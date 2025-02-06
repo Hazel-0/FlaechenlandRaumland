@@ -14,7 +14,7 @@ public class SphereMovementAxisTouched : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Axis touched");
+        //Debug.Log("Axis touched");
         if (other.tag == "AxisTracker" || other.name == "AxisTracker" || other.name == "sphere" ) {
             Debug.Log("Axis touched by sphere");
             if (this.name == "AxisUp")

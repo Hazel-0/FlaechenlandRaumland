@@ -10,6 +10,10 @@ public class QuestsChapter4 : MonoBehaviour
 
     public GameObject hypersphere;
     private Animator hypersphereAnimator;
+    public GameObject hypersphere1;
+    private Animator hypersphereAnimator1;
+    public GameObject hypersphere2;
+    private Animator hypersphereAnimator2;
 
     // to trigger hypersphere appearing
     private GameObject triggerHypersphere;
@@ -29,6 +33,8 @@ public class QuestsChapter4 : MonoBehaviour
         triggerHypersphere.SetActive(false);
 
         hypersphereAnimator = hypersphere.GetComponent<Animator>();
+        hypersphereAnimator1 = hypersphere1.GetComponent<Animator>();
+        hypersphereAnimator2 = hypersphere2.GetComponent<Animator>();
         AudioSetup();
         StartCoroutine(QuestLine());
     }
@@ -62,6 +68,9 @@ public class QuestsChapter4 : MonoBehaviour
 
         // Hypersphere transition
         hypersphereAnimator.SetTrigger("Transition");
+        hypersphereAnimator1.SetTrigger("Transition");
+        hypersphereAnimator2.SetTrigger("Transition");
+
         hypersphere.GetComponent<AudioSource>().Play();
 
         // sphere talking

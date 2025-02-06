@@ -9,13 +9,17 @@ public class SceneControl : MonoBehaviour {
 
     void Start() {
         GameObject sphere = GameObject.FindGameObjectWithTag("NoCollision");
-        Physics.IgnoreCollision(sphere.GetComponent<Collider>(), GetComponent<Collider>());
+        if (sphere.GetComponent<Collider>() != null)
+        {
+            Physics.IgnoreCollision(sphere.GetComponent<Collider>(), GetComponent<Collider>());
+        }
     }
 
     // Executed once when script is activated by Sphere > XR Grab Interactable 
     // then initiated is set to false
     private void Update() {
         if (!initiated) {
+            Debug.Log("Script activated");
             StartCoroutine(LoadAsyncScene());
             initiated = true;
         }
