@@ -202,11 +202,8 @@ public class QuestsChapter2 : MonoBehaviour {
                 sphereMovementAxis.ActivateAxes();
 
                 // play drop hint only if no other clip is playing, else skip
-                if (!audioGrab.isPlaying)
-                {
-                    yield return new WaitForSeconds(waitTillDropTime + audio4.clip.length);
-                    audio3_dropCommand.Play();
-                }
+                yield return new WaitForSeconds(waitTillDropTime + audio4.clip.length);
+                audio3_dropCommand.Play();
 
 
                 while (!upperAxisTouched) { yield return null; }

@@ -5143,8 +5143,12 @@ PrefabInstance:
       value: 75.48067
       objectReference: {fileID: 0}
     - target: {fileID: 3381578572589697634, guid: 2efc6626349209649a5a36f50588f010, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.025
+      objectReference: {fileID: 0}
+    - target: {fileID: 3381578572589697634, guid: 2efc6626349209649a5a36f50588f010, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.043
+      value: 0.049
       objectReference: {fileID: 0}
     - target: {fileID: 4006065616828406664, guid: 2efc6626349209649a5a36f50588f010, type: 3}
       propertyPath: m_IsActive
@@ -5159,8 +5163,12 @@ PrefabInstance:
       value: 75.48067
       objectReference: {fileID: 0}
     - target: {fileID: 6580076386348963896, guid: 2efc6626349209649a5a36f50588f010, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.031
+      objectReference: {fileID: 0}
+    - target: {fileID: 6580076386348963896, guid: 2efc6626349209649a5a36f50588f010, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.06
+      value: 0.054
       objectReference: {fileID: 0}
     - target: {fileID: 8250438579586272396, guid: 2efc6626349209649a5a36f50588f010, type: 3}
       propertyPath: m_RootOrder
@@ -11115,14 +11123,6 @@ MonoBehaviour:
   - {fileID: 1314260305}
   - {fileID: 333309462}
   - {fileID: 1147809064}
-  grabCommands:
-  - {fileID: 1363785652}
-  - {fileID: 1342449612}
-  - {fileID: 1370179268}
-  - {fileID: 315879257}
-  - {fileID: 1967422366}
-  - {fileID: 755336568}
-  - {fileID: 712849607}
   objects2D:
   - {fileID: 7400971526646731177}
   - {fileID: 7400971526704368040}
@@ -11140,6 +11140,14 @@ MonoBehaviour:
   cameraPlane: {fileID: 599069581}
   corner_max: {fileID: 1920551426}
   corner_min: {fileID: 394830462}
+  grabCommands:
+  - {fileID: 1363785652}
+  - {fileID: 1342449612}
+  - {fileID: 1370179268}
+  - {fileID: 315879257}
+  - {fileID: 1967422366}
+  - {fileID: 755336568}
+  - {fileID: 712849607}
   cylinderNotGrabbed: 1
   waitTillDropTime: 6
   flatlandExpanding: 0
