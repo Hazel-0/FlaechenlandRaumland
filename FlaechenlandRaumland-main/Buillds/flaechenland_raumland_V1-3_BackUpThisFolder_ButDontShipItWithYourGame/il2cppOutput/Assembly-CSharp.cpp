@@ -19254,35 +19254,35 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool U3CQuestLineU3Ed__37_MoveNext_m38373DACB
 			}
 			case 11:
 			{
-				goto IL_03b8;
+				goto IL_03ab;
 			}
 			case 12:
 			{
-				goto IL_03dd;
+				goto IL_03d0;
 			}
 			case 13:
 			{
-				goto IL_03ff;
+				goto IL_03f2;
 			}
 			case 14:
 			{
-				goto IL_048c;
+				goto IL_047f;
 			}
 			case 15:
 			{
-				goto IL_04be;
+				goto IL_04b1;
 			}
 			case 16:
 			{
-				goto IL_0506;
+				goto IL_04f9;
 			}
 			case 17:
 			{
-				goto IL_056f;
+				goto IL_0562;
 			}
 			case 18:
 			{
-				goto IL_05ae;
+				goto IL_05a1;
 			}
 		}
 	}
@@ -19389,7 +19389,7 @@ IL_0116:
 		Behaviour_set_enabled_mF1DCFE60EB09E0529FE9476CA804A3AA2D72B16A(L_22, (bool)1, NULL);
 		// for (int i = 0; i < objects3D.Length; i++)
 		__this->___U3CiU3E5__2_3 = 0;
-		goto IL_04e0;
+		goto IL_04d3;
 	}
 
 IL_013c:
@@ -19678,7 +19678,7 @@ IL_030e:
 		int32_t L_87 = __this->___U3CiU3E5__2_3;
 		if ((!(((uint32_t)L_87) == ((uint32_t)6))))
 		{
-			goto IL_041d;
+			goto IL_0410;
 		}
 	}
 	{
@@ -19743,54 +19743,41 @@ IL_030e:
 		SphereMovementAxis_t890204944ADD4E767A041E5B2B445A36B7D7DEAC* L_113 = L_112->___sphereMovementAxis_25;
 		NullCheck(L_113);
 		SphereMovementAxis_ActivateAxes_m81015965A5FA5B60F800DCA07EEF552866C33212(L_113, NULL);
-		// if (!audioGrab.isPlaying)
+		// yield return new WaitForSeconds(waitTillDropTime + audio4.clip.length);
 		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_114 = V_1;
 		NullCheck(L_114);
-		AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299* L_115 = L_114->___audioGrab_18;
-		NullCheck(L_115);
-		bool L_116;
-		L_116 = AudioSource_get_isPlaying_mC203303F2F7146B2C056CB47B9391463FDF408FC(L_115, NULL);
-		if (L_116)
-		{
-			goto IL_03e4;
-		}
-	}
-	{
-		// yield return new WaitForSeconds(waitTillDropTime + audio4.clip.length);
-		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_117 = V_1;
+		float L_115 = L_114->___waitTillDropTime_24;
+		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_116 = V_1;
+		NullCheck(L_116);
+		AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299* L_117 = L_116->___audio4_37;
 		NullCheck(L_117);
-		float L_118 = L_117->___waitTillDropTime_24;
-		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_119 = V_1;
-		NullCheck(L_119);
-		AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299* L_120 = L_119->___audio4_37;
+		AudioClip_t5D272C4EB4F2D3ED49F1C346DEA373CF6D585F20* L_118;
+		L_118 = AudioSource_get_clip_m4F5027066F9FC44B44192713142B0C277BB418FE(L_117, NULL);
+		NullCheck(L_118);
+		float L_119;
+		L_119 = AudioClip_get_length_m6102CB29AF65988797452E4D6E43D4788303873D(L_118, NULL);
+		WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3* L_120 = (WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3*)il2cpp_codegen_object_new(WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3_il2cpp_TypeInfo_var);
 		NullCheck(L_120);
-		AudioClip_t5D272C4EB4F2D3ED49F1C346DEA373CF6D585F20* L_121;
-		L_121 = AudioSource_get_clip_m4F5027066F9FC44B44192713142B0C277BB418FE(L_120, NULL);
-		NullCheck(L_121);
-		float L_122;
-		L_122 = AudioClip_get_length_m6102CB29AF65988797452E4D6E43D4788303873D(L_121, NULL);
-		WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3* L_123 = (WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3*)il2cpp_codegen_object_new(WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3_il2cpp_TypeInfo_var);
-		NullCheck(L_123);
-		WaitForSeconds__ctor_m579F95BADEDBAB4B3A7E302C6EE3995926EF2EFC(L_123, ((float)il2cpp_codegen_add(L_118, L_122)), NULL);
-		__this->___U3CU3E2__current_1 = L_123;
-		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CU3E2__current_1), (void*)L_123);
+		WaitForSeconds__ctor_m579F95BADEDBAB4B3A7E302C6EE3995926EF2EFC(L_120, ((float)il2cpp_codegen_add(L_115, L_119)), NULL);
+		__this->___U3CU3E2__current_1 = L_120;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CU3E2__current_1), (void*)L_120);
 		__this->___U3CU3E1__state_0 = ((int32_t)11);
 		return (bool)1;
 	}
 
-IL_03b8:
+IL_03ab:
 	{
 		__this->___U3CU3E1__state_0 = (-1);
 		// audio3_dropCommand.Play();
-		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_124 = V_1;
-		NullCheck(L_124);
-		AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299* L_125 = L_124->___audio3_dropCommand_36;
-		NullCheck(L_125);
-		AudioSource_Play_m95DF07111C61D0E0F00257A00384D31531D590C3(L_125, NULL);
-		goto IL_03e4;
+		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_121 = V_1;
+		NullCheck(L_121);
+		AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299* L_122 = L_121->___audio3_dropCommand_36;
+		NullCheck(L_122);
+		AudioSource_Play_m95DF07111C61D0E0F00257A00384D31531D590C3(L_122, NULL);
+		goto IL_03d7;
 	}
 
-IL_03cc:
+IL_03bf:
 	{
 		// while (!upperAxisTouched) { yield return null; }
 		__this->___U3CU3E2__current_1 = NULL;
@@ -19799,27 +19786,27 @@ IL_03cc:
 		return (bool)1;
 	}
 
-IL_03dd:
+IL_03d0:
 	{
 		__this->___U3CU3E1__state_0 = (-1);
 	}
 
-IL_03e4:
+IL_03d7:
 	{
 		// while (!upperAxisTouched) { yield return null; }
-		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_126 = V_1;
-		NullCheck(L_126);
-		bool L_127 = L_126->___upperAxisTouched_29;
-		if (!L_127)
+		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_123 = V_1;
+		NullCheck(L_123);
+		bool L_124 = L_123->___upperAxisTouched_29;
+		if (!L_124)
 		{
-			goto IL_03cc;
+			goto IL_03bf;
 		}
 	}
 	{
-		goto IL_0406;
+		goto IL_03f9;
 	}
 
-IL_03ee:
+IL_03e1:
 	{
 		// while (!lowerAxisTouched) { yield return null; }
 		__this->___U3CU3E2__current_1 = NULL;
@@ -19828,120 +19815,120 @@ IL_03ee:
 		return (bool)1;
 	}
 
-IL_03ff:
+IL_03f2:
 	{
 		__this->___U3CU3E1__state_0 = (-1);
 	}
 
-IL_0406:
+IL_03f9:
 	{
 		// while (!lowerAxisTouched) { yield return null; }
-		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_128 = V_1;
-		NullCheck(L_128);
-		bool L_129 = L_128->___lowerAxisTouched_30;
-		if (!L_129)
+		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_125 = V_1;
+		NullCheck(L_125);
+		bool L_126 = L_125->___lowerAxisTouched_30;
+		if (!L_126)
 		{
-			goto IL_03ee;
+			goto IL_03e1;
 		}
 	}
 	{
 		// Debug.Log("Both axis touched");
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(_stringLiteralC41E7FE9D2B9E6FC70B370422F687EC72F3DF2FE, NULL);
-		goto IL_04c5;
+		goto IL_04b8;
 	}
 
-IL_041d:
+IL_0410:
 	{
 		// else if (i >= 1 && i < 6) {
-		int32_t L_130 = __this->___U3CiU3E5__2_3;
-		if ((((int32_t)L_130) < ((int32_t)1)))
+		int32_t L_127 = __this->___U3CiU3E5__2_3;
+		if ((((int32_t)L_127) < ((int32_t)1)))
 		{
-			goto IL_04c5;
+			goto IL_04b8;
 		}
 	}
 	{
-		int32_t L_131 = __this->___U3CiU3E5__2_3;
-		if ((((int32_t)L_131) >= ((int32_t)6)))
+		int32_t L_128 = __this->___U3CiU3E5__2_3;
+		if ((((int32_t)L_128) >= ((int32_t)6)))
 		{
-			goto IL_04c5;
+			goto IL_04b8;
 		}
 	}
 	{
 		// objects3D[lastObjectHeld].GetComponent<Collider>().isTrigger = true;
-		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_132 = V_1;
-		NullCheck(L_132);
-		GameObjectU5BU5D_tFF67550DFCE87096D7A3734EA15B75896B2722CF* L_133 = L_132->___objects3D_6;
-		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_134 = V_1;
+		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_129 = V_1;
+		NullCheck(L_129);
+		GameObjectU5BU5D_tFF67550DFCE87096D7A3734EA15B75896B2722CF* L_130 = L_129->___objects3D_6;
+		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_131 = V_1;
+		NullCheck(L_131);
+		int32_t L_132 = L_131->___lastObjectHeld_16;
+		NullCheck(L_130);
+		int32_t L_133 = L_132;
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_134 = (L_130)->GetAt(static_cast<il2cpp_array_size_t>(L_133));
 		NullCheck(L_134);
-		int32_t L_135 = L_134->___lastObjectHeld_16;
-		NullCheck(L_133);
-		int32_t L_136 = L_135;
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_137 = (L_133)->GetAt(static_cast<il2cpp_array_size_t>(L_136));
-		NullCheck(L_137);
-		Collider_t1CC3163924FCD6C4CC2E816373A929C1E3D55E76* L_138;
-		L_138 = GameObject_GetComponent_TisCollider_t1CC3163924FCD6C4CC2E816373A929C1E3D55E76_m4CB0FC4E59CE6C91F1106739EF364208A63E2597(L_137, GameObject_GetComponent_TisCollider_t1CC3163924FCD6C4CC2E816373A929C1E3D55E76_m4CB0FC4E59CE6C91F1106739EF364208A63E2597_RuntimeMethod_var);
-		NullCheck(L_138);
-		Collider_set_isTrigger_mFCD22F3EB5E28C97863956AB725D53F7F4B7CA78(L_138, (bool)1, NULL);
+		Collider_t1CC3163924FCD6C4CC2E816373A929C1E3D55E76* L_135;
+		L_135 = GameObject_GetComponent_TisCollider_t1CC3163924FCD6C4CC2E816373A929C1E3D55E76_m4CB0FC4E59CE6C91F1106739EF364208A63E2597(L_134, GameObject_GetComponent_TisCollider_t1CC3163924FCD6C4CC2E816373A929C1E3D55E76_m4CB0FC4E59CE6C91F1106739EF364208A63E2597_RuntimeMethod_var);
+		NullCheck(L_135);
+		Collider_set_isTrigger_mFCD22F3EB5E28C97863956AB725D53F7F4B7CA78(L_135, (bool)1, NULL);
 		// objects3D[lastObjectHeld].GetComponent<MeshRenderer>().enabled = false;
-		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_139 = V_1;
-		NullCheck(L_139);
-		GameObjectU5BU5D_tFF67550DFCE87096D7A3734EA15B75896B2722CF* L_140 = L_139->___objects3D_6;
-		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_141 = V_1;
+		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_136 = V_1;
+		NullCheck(L_136);
+		GameObjectU5BU5D_tFF67550DFCE87096D7A3734EA15B75896B2722CF* L_137 = L_136->___objects3D_6;
+		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_138 = V_1;
+		NullCheck(L_138);
+		int32_t L_139 = L_138->___lastObjectHeld_16;
+		NullCheck(L_137);
+		int32_t L_140 = L_139;
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_141 = (L_137)->GetAt(static_cast<il2cpp_array_size_t>(L_140));
 		NullCheck(L_141);
-		int32_t L_142 = L_141->___lastObjectHeld_16;
-		NullCheck(L_140);
-		int32_t L_143 = L_142;
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_144 = (L_140)->GetAt(static_cast<il2cpp_array_size_t>(L_143));
-		NullCheck(L_144);
-		MeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE* L_145;
-		L_145 = GameObject_GetComponent_TisMeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE_m7FF948365C38BC39333D82B235A7C4EAD219960D(L_144, GameObject_GetComponent_TisMeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE_m7FF948365C38BC39333D82B235A7C4EAD219960D_RuntimeMethod_var);
-		NullCheck(L_145);
-		Renderer_set_enabled_m015E6D7B825528A31182F267234CC6A925F71DA8(L_145, (bool)0, NULL);
+		MeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE* L_142;
+		L_142 = GameObject_GetComponent_TisMeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE_m7FF948365C38BC39333D82B235A7C4EAD219960D(L_141, GameObject_GetComponent_TisMeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE_m7FF948365C38BC39333D82B235A7C4EAD219960D_RuntimeMethod_var);
+		NullCheck(L_142);
+		Renderer_set_enabled_m015E6D7B825528A31182F267234CC6A925F71DA8(L_142, (bool)0, NULL);
 		// setLastHeldObjectVar(i);
-		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_146 = V_1;
-		int32_t L_147 = __this->___U3CiU3E5__2_3;
-		NullCheck(L_146);
-		QuestsChapter2_setLastHeldObjectVar_m9357AC491E2D71CF3C4CF1057ED0F795CEA5D599(L_146, L_147, NULL);
+		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_143 = V_1;
+		int32_t L_144 = __this->___U3CiU3E5__2_3;
+		NullCheck(L_143);
+		QuestsChapter2_setLastHeldObjectVar_m9357AC491E2D71CF3C4CF1057ED0F795CEA5D599(L_143, L_144, NULL);
 		// yield return new WaitForSeconds(waitTillDropTime);
-		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_148 = V_1;
-		NullCheck(L_148);
-		float L_149 = L_148->___waitTillDropTime_24;
-		WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3* L_150 = (WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3*)il2cpp_codegen_object_new(WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3_il2cpp_TypeInfo_var);
-		NullCheck(L_150);
-		WaitForSeconds__ctor_m579F95BADEDBAB4B3A7E302C6EE3995926EF2EFC(L_150, L_149, NULL);
-		__this->___U3CU3E2__current_1 = L_150;
-		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CU3E2__current_1), (void*)L_150);
+		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_145 = V_1;
+		NullCheck(L_145);
+		float L_146 = L_145->___waitTillDropTime_24;
+		WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3* L_147 = (WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3*)il2cpp_codegen_object_new(WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3_il2cpp_TypeInfo_var);
+		NullCheck(L_147);
+		WaitForSeconds__ctor_m579F95BADEDBAB4B3A7E302C6EE3995926EF2EFC(L_147, L_146, NULL);
+		__this->___U3CU3E2__current_1 = L_147;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CU3E2__current_1), (void*)L_147);
 		__this->___U3CU3E1__state_0 = ((int32_t)14);
 		return (bool)1;
 	}
 
-IL_048c:
+IL_047f:
 	{
 		__this->___U3CU3E1__state_0 = (-1);
 		// if (!audioGrab.isPlaying) {
-		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_151 = V_1;
-		NullCheck(L_151);
-		AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299* L_152 = L_151->___audioGrab_18;
-		NullCheck(L_152);
-		bool L_153;
-		L_153 = AudioSource_get_isPlaying_mC203303F2F7146B2C056CB47B9391463FDF408FC(L_152, NULL);
-		if (L_153)
+		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_148 = V_1;
+		NullCheck(L_148);
+		AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299* L_149 = L_148->___audioGrab_18;
+		NullCheck(L_149);
+		bool L_150;
+		L_150 = AudioSource_get_isPlaying_mC203303F2F7146B2C056CB47B9391463FDF408FC(L_149, NULL);
+		if (L_150)
 		{
-			goto IL_04c5;
+			goto IL_04b8;
 		}
 	}
 	{
 		// audio3_dropCommand.Play();
-		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_154 = V_1;
-		NullCheck(L_154);
-		AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299* L_155 = L_154->___audio3_dropCommand_36;
-		NullCheck(L_155);
-		AudioSource_Play_m95DF07111C61D0E0F00257A00384D31531D590C3(L_155, NULL);
-		goto IL_04c5;
+		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_151 = V_1;
+		NullCheck(L_151);
+		AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299* L_152 = L_151->___audio3_dropCommand_36;
+		NullCheck(L_152);
+		AudioSource_Play_m95DF07111C61D0E0F00257A00384D31531D590C3(L_152, NULL);
+		goto IL_04b8;
 	}
 
-IL_04ad:
+IL_04a0:
 	{
 		// yield return null;
 		__this->___U3CU3E2__current_1 = NULL;
@@ -19950,48 +19937,48 @@ IL_04ad:
 		return (bool)1;
 	}
 
-IL_04be:
+IL_04b1:
 	{
 		__this->___U3CU3E1__state_0 = (-1);
 	}
 
-IL_04c5:
+IL_04b8:
 	{
 		// while (heldObject != -1)
-		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_156 = V_1;
-		NullCheck(L_156);
-		int32_t L_157 = L_156->___heldObject_8;
-		if ((!(((uint32_t)L_157) == ((uint32_t)(-1)))))
+		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_153 = V_1;
+		NullCheck(L_153);
+		int32_t L_154 = L_153->___heldObject_8;
+		if ((!(((uint32_t)L_154) == ((uint32_t)(-1)))))
 		{
-			goto IL_04ad;
+			goto IL_04a0;
 		}
 	}
 	{
 		// for (int i = 0; i < objects3D.Length; i++)
-		int32_t L_158 = __this->___U3CiU3E5__2_3;
-		V_4 = L_158;
-		int32_t L_159 = V_4;
-		__this->___U3CiU3E5__2_3 = ((int32_t)il2cpp_codegen_add(L_159, 1));
+		int32_t L_155 = __this->___U3CiU3E5__2_3;
+		V_4 = L_155;
+		int32_t L_156 = V_4;
+		__this->___U3CiU3E5__2_3 = ((int32_t)il2cpp_codegen_add(L_156, 1));
 	}
 
-IL_04e0:
+IL_04d3:
 	{
 		// for (int i = 0; i < objects3D.Length; i++)
-		int32_t L_160 = __this->___U3CiU3E5__2_3;
-		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_161 = V_1;
-		NullCheck(L_161);
-		GameObjectU5BU5D_tFF67550DFCE87096D7A3734EA15B75896B2722CF* L_162 = L_161->___objects3D_6;
-		NullCheck(L_162);
-		if ((((int32_t)L_160) < ((int32_t)((int32_t)(((RuntimeArray*)L_162)->max_length)))))
+		int32_t L_157 = __this->___U3CiU3E5__2_3;
+		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_158 = V_1;
+		NullCheck(L_158);
+		GameObjectU5BU5D_tFF67550DFCE87096D7A3734EA15B75896B2722CF* L_159 = L_158->___objects3D_6;
+		NullCheck(L_159);
+		if ((((int32_t)L_157) < ((int32_t)((int32_t)(((RuntimeArray*)L_159)->max_length)))))
 		{
 			goto IL_013c;
 		}
 	}
 	{
-		goto IL_0517;
+		goto IL_050a;
 	}
 
-IL_04f5:
+IL_04e8:
 	{
 		// yield return null;
 		__this->___U3CU3E2__current_1 = NULL;
@@ -20000,7 +19987,7 @@ IL_04f5:
 		return (bool)1;
 	}
 
-IL_0506:
+IL_04f9:
 	{
 		__this->___U3CU3E1__state_0 = (-1);
 		// Debug.Log("Scene not yet finished");
@@ -20008,15 +19995,15 @@ IL_0506:
 		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(_stringLiteralA3FDBF444AE7CB99246365957CE04B559BC0E7FB, NULL);
 	}
 
-IL_0517:
+IL_050a:
 	{
 		// while (!sceneFinished)
-		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_163 = V_1;
-		NullCheck(L_163);
-		bool L_164 = L_163->___sceneFinished_31;
-		if (!L_164)
+		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_160 = V_1;
+		NullCheck(L_160);
+		bool L_161 = L_160->___sceneFinished_31;
+		if (!L_161)
 		{
-			goto IL_04f5;
+			goto IL_04e8;
 		}
 	}
 	{
@@ -20024,37 +20011,37 @@ IL_0517:
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(_stringLiteral2BC8A18D0AC0A160E8B13F83B870A4AA039EB51F, NULL);
 		// audio5 = audioClips[5].GetComponent<AudioSource>();
-		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_165 = V_1;
-		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_166 = V_1;
+		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_162 = V_1;
+		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_163 = V_1;
+		NullCheck(L_163);
+		GameObjectU5BU5D_tFF67550DFCE87096D7A3734EA15B75896B2722CF* L_164 = L_163->___audioClips_4;
+		NullCheck(L_164);
+		int32_t L_165 = 5;
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_166 = (L_164)->GetAt(static_cast<il2cpp_array_size_t>(L_165));
 		NullCheck(L_166);
-		GameObjectU5BU5D_tFF67550DFCE87096D7A3734EA15B75896B2722CF* L_167 = L_166->___audioClips_4;
-		NullCheck(L_167);
-		int32_t L_168 = 5;
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_169 = (L_167)->GetAt(static_cast<il2cpp_array_size_t>(L_168));
-		NullCheck(L_169);
-		AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299* L_170;
-		L_170 = GameObject_GetComponent_TisAudioSource_t871AC2272F896738252F04EE949AEF5B241D3299_m4F30DAB8E5B57E8DB6BD8C0C3BB11CCB57690C4A(L_169, GameObject_GetComponent_TisAudioSource_t871AC2272F896738252F04EE949AEF5B241D3299_m4F30DAB8E5B57E8DB6BD8C0C3BB11CCB57690C4A_RuntimeMethod_var);
-		NullCheck(L_165);
-		L_165->___audio5_38 = L_170;
-		Il2CppCodeGenWriteBarrier((void**)(&L_165->___audio5_38), (void*)L_170);
+		AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299* L_167;
+		L_167 = GameObject_GetComponent_TisAudioSource_t871AC2272F896738252F04EE949AEF5B241D3299_m4F30DAB8E5B57E8DB6BD8C0C3BB11CCB57690C4A(L_166, GameObject_GetComponent_TisAudioSource_t871AC2272F896738252F04EE949AEF5B241D3299_m4F30DAB8E5B57E8DB6BD8C0C3BB11CCB57690C4A_RuntimeMethod_var);
+		NullCheck(L_162);
+		L_162->___audio5_38 = L_167;
+		Il2CppCodeGenWriteBarrier((void**)(&L_162->___audio5_38), (void*)L_167);
 		// audio5.Play();
-		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_171 = V_1;
-		NullCheck(L_171);
-		AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299* L_172 = L_171->___audio5_38;
-		NullCheck(L_172);
-		AudioSource_Play_m95DF07111C61D0E0F00257A00384D31531D590C3(L_172, NULL);
+		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_168 = V_1;
+		NullCheck(L_168);
+		AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299* L_169 = L_168->___audio5_38;
+		NullCheck(L_169);
+		AudioSource_Play_m95DF07111C61D0E0F00257A00384D31531D590C3(L_169, NULL);
 		// flatlanderHouse.ActivateSceneChange();
-		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_173 = V_1;
-		NullCheck(L_173);
-		FlatlanderHouse_tB1B076F6F5989371A7BEE34B3B40EEF5EEB36074* L_174 = L_173->___flatlanderHouse_22;
-		NullCheck(L_174);
-		FlatlanderHouse_ActivateSceneChange_m107631FFB2BB7D2DB62A46DBAF844590BA4CC1FC(L_174, NULL);
+		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_170 = V_1;
+		NullCheck(L_170);
+		FlatlanderHouse_tB1B076F6F5989371A7BEE34B3B40EEF5EEB36074* L_171 = L_170->___flatlanderHouse_22;
+		NullCheck(L_171);
+		FlatlanderHouse_ActivateSceneChange_m107631FFB2BB7D2DB62A46DBAF844590BA4CC1FC(L_171, NULL);
 		// Debug.Log("All 3D objects done");
 		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(_stringLiteral8841B2697BBE0C38F3088F11DBC018D921490921, NULL);
-		goto IL_0576;
+		goto IL_0569;
 	}
 
-IL_055e:
+IL_0551:
 	{
 		// yield return null;
 		__this->___U3CU3E2__current_1 = NULL;
@@ -20063,51 +20050,51 @@ IL_055e:
 		return (bool)1;
 	}
 
-IL_056f:
+IL_0562:
 	{
 		__this->___U3CU3E1__state_0 = (-1);
 	}
 
-IL_0576:
+IL_0569:
 	{
 		// while (!houseTouched)
-		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_175 = V_1;
-		NullCheck(L_175);
-		bool L_176 = L_175->___houseTouched_32;
-		if (!L_176)
+		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_172 = V_1;
+		NullCheck(L_172);
+		bool L_173 = L_172->___houseTouched_32;
+		if (!L_173)
 		{
-			goto IL_055e;
+			goto IL_0551;
 		}
 	}
 	{
 		// sphereMovementAxisObj.SetActive(false);
-		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_177 = V_1;
-		NullCheck(L_177);
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_178 = L_177->___sphereMovementAxisObj_28;
-		NullCheck(L_178);
-		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_178, (bool)0, NULL);
+		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_174 = V_1;
+		NullCheck(L_174);
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_175 = L_174->___sphereMovementAxisObj_28;
+		NullCheck(L_175);
+		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_175, (bool)0, NULL);
 		// Debug.Log("change to next scene");
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(_stringLiteralEB5EFD7D0201106FBC163B8AA7B6E03CF378E51B, NULL);
 		// yield return new WaitForSeconds(3.0f);
-		WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3* L_179 = (WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3*)il2cpp_codegen_object_new(WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3_il2cpp_TypeInfo_var);
-		NullCheck(L_179);
-		WaitForSeconds__ctor_m579F95BADEDBAB4B3A7E302C6EE3995926EF2EFC(L_179, (3.0f), NULL);
-		__this->___U3CU3E2__current_1 = L_179;
-		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CU3E2__current_1), (void*)L_179);
+		WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3* L_176 = (WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3*)il2cpp_codegen_object_new(WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3_il2cpp_TypeInfo_var);
+		NullCheck(L_176);
+		WaitForSeconds__ctor_m579F95BADEDBAB4B3A7E302C6EE3995926EF2EFC(L_176, (3.0f), NULL);
+		__this->___U3CU3E2__current_1 = L_176;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CU3E2__current_1), (void*)L_176);
 		__this->___U3CU3E1__state_0 = ((int32_t)18);
 		return (bool)1;
 	}
 
-IL_05ae:
+IL_05a1:
 	{
 		__this->___U3CU3E1__state_0 = (-1);
 		// sceneControlScript.enabled = true;
-		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_180 = V_1;
-		NullCheck(L_180);
-		SceneControl_tB5F69E118FF00E7DD7FA6A3BBDD662CF9640F039* L_181 = L_180->___sceneControlScript_27;
-		NullCheck(L_181);
-		Behaviour_set_enabled_mF1DCFE60EB09E0529FE9476CA804A3AA2D72B16A(L_181, (bool)1, NULL);
+		QuestsChapter2_tAA47C605718941FDBFBB672E197039D9463FF278* L_177 = V_1;
+		NullCheck(L_177);
+		SceneControl_tB5F69E118FF00E7DD7FA6A3BBDD662CF9640F039* L_178 = L_177->___sceneControlScript_27;
+		NullCheck(L_178);
+		Behaviour_set_enabled_mF1DCFE60EB09E0529FE9476CA804A3AA2D72B16A(L_178, (bool)1, NULL);
 		// }
 		return (bool)0;
 	}
