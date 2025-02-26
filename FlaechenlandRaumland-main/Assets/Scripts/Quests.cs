@@ -101,7 +101,7 @@ public class Quests : MonoBehaviour {
         }
 
         /** Gieﬂen fertig **/
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(4.0f);
         StopAllAudio();
         audioClips[2].GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(10.0f);

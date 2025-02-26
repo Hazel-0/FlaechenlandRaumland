@@ -21,6 +21,7 @@ public class QuestsChapter3 : MonoBehaviour
     private GameObject[] audioClips_Sphere;
 
     private lookingAtSquareCheck lookingAtSquareCheck_script;
+    private LookingAtAxisCheck lookingAtAxisCheck_script;
 
     public GameObject square;
     private Animator squareAnimator;
@@ -31,11 +32,18 @@ public class QuestsChapter3 : MonoBehaviour
     public GameObject sphere;
     private Animator sphereAnimator;
 
+    // for checking if player moves joystick
+    private GameObject joystickCollider;
+    private GameObject mainCameraInScene;
+
     // to play door + background audio
     private AudioSource backgroundMusic;
 
     // for triggering next action
+    private bool mainCameraTriggerTouched = false;
+    public bool waitingForMainCameraTrigger = false;
     private bool lookingAtSquare = false;
+    private bool lookingAtAxis = false;
     private bool standingNearSquare = false;
     private bool playerDucking = false;
     //public bool readyToDuck = false;
@@ -60,15 +68,19 @@ public class QuestsChapter3 : MonoBehaviour
         circleAnimator = circle.GetComponent<Animator>();
         sphereAnimator = sphere.GetComponent<Animator>();
 
+        joystickCollider = GameObject.Find("JoystickCollider");
+        mainCameraInScene = GameObject.Find("Main Camera");
+
         triggerObject = GameObject.Find("Trigger_Square");
         triggerObject.SetActive(true);
 
-        // find script and disable to prevent instant triggering of square
+        // find scripts and disable to prevent instant triggering
         lookingAtSquareCheck_script = GameObject.Find("Main Camera").GetComponent<lookingAtSquareCheck>();
         lookingAtSquareCheck_script.enabled = false;
 
+        lookingAtAxisCheck_script = GameObject.Find("Main Camera").GetComponent<LookingAtAxisCheck>();
+        lookingAtAxisCheck_script.enabled = false;
 
-        // TODO used for debugging
 
         trigger_changeScene.SetActive(false);
         if (sceneControlScript == null)
@@ -118,7 +130,21 @@ public class QuestsChapter3 : MonoBehaviour
         // waits for joystick test
         yield return new WaitForSeconds(17.5f);
         squareAnimator.SetTrigger("WaitInside");
-        yield return new WaitForSeconds(5.0f);
+
+        // set collider to player position
+        joystickCollider.GetComponent<Transform>().position = mainCameraInScene.GetComponent<Transform>().position;
+        
+        // only continue if player moves outside controller
+        waitingForMainCameraTrigger = true;
+
+
+        while (!mainCameraTriggerTouched)
+        {
+            yield return null;
+        }
+
+        waitingForMainCameraTrigger = false;
+        yield return new WaitForSeconds(2.0f);
 
         // continues talking
         squareAnimator.SetTrigger("TalkInside");
@@ -137,7 +163,7 @@ public class QuestsChapter3 : MonoBehaviour
 
        while (!standingNearSquare) { 
             yield return null;
-            Debug.Log("Not near square");
+            // Debug.Log("Not near square");
        }
 
         Debug.Log("Standing near square");
@@ -170,11 +196,20 @@ public class QuestsChapter3 : MonoBehaviour
         squareAnimator.SetTrigger("IdleOutside");
 
         // Triangle turns around
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(3.0f);
         triangleAnimator.SetTrigger("TurnAround");
 
-        // Sphere transitions through flatland
+        lookingAtAxisCheck_script.enabled = true;
         sphere.SetActive(true);
+
+        // is set to true by AxisHit method (used by lookingAtAxisCheck on MainCamera)
+        while (!lookingAtAxis)
+        {
+            yield return new WaitForSeconds(6.0f);
+            audioClips_Square[4].GetComponent<AudioSource>().Play();
+        }
+
+        // Sphere transitions through flatland
         sphereAnimator.SetTrigger("Transition");
         audioClips_Sphere[0].GetComponent<AudioSource>().Play();
 
@@ -251,6 +286,11 @@ public class QuestsChapter3 : MonoBehaviour
         lookingAtSquare = true;
     }
 
+    public void AxisHit()
+    {
+        lookingAtAxis = true;
+    }
+
     public void StandingNearSquare()
     {
         standingNearSquare = true;
@@ -259,5 +299,15 @@ public class QuestsChapter3 : MonoBehaviour
     public bool FirstTriggerDone()
     {
         return lookingAtSquare;
+    }
+
+    public bool SecondTriggerDone()
+    {
+        return lookingAtAxis;
+    }
+
+    public void MainCameraTriggerTouched()
+    {
+        mainCameraTriggerTouched = true;
     }
 }

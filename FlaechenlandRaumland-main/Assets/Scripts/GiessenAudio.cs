@@ -23,5 +23,8 @@ public class GiessenAudio : MonoBehaviour
     {
         Debug.Log("Pflanze" + index + "Audio");
         audioClips[index].GetComponent<AudioSource>().Play();
+
+        // funktioniert das: Audio "gut gemacht" kommt direkt nach dem Wachsen
+        quests.GiessenFertig();
     }
 }
