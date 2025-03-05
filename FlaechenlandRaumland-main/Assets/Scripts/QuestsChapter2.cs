@@ -168,6 +168,8 @@ public class QuestsChapter2 : MonoBehaviour {
                     Debug.Log("StartWiggling");
                 }
 
+                yield return new WaitForSeconds(2.0f);
+
                 // explain cross-section with cylinder
                 audio1 = audioClips[1].GetComponent<AudioSource>();
                 audio1.Play();
@@ -180,7 +182,7 @@ public class QuestsChapter2 : MonoBehaviour {
 
                 sphereMovementAxis.ActivateAxes();
 
-                yield return new WaitForSeconds(20.0f);
+                yield return new WaitForSeconds(30.0f);
                 audio2 = audioClips[2].GetComponent<AudioSource>(); // play cylinder drop information
                 audio2.Play();
 
