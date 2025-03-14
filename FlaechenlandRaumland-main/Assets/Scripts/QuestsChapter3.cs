@@ -205,11 +205,22 @@ public class QuestsChapter3 : MonoBehaviour
         // is set to true by AxisHit method (used by lookingAtAxisCheck on MainCamera)
         while (!lookingAtAxis)
         {
-            yield return new WaitForSeconds(6.0f);
-            audioClips_Square[4].GetComponent<AudioSource>().Play();
+            yield return new WaitForSeconds(2.0f);
+            // check again
+            if (!lookingAtAxis)
+            {
+                yield return new WaitForSeconds(2.0f);
+            }
+            // check again
+            if (!lookingAtAxis)
+            {
+                yield return new WaitForSeconds(2.0f);
+                audioClips_Square[4].GetComponent<AudioSource>().Play();
+            }
         }
 
         // Sphere transitions through flatland
+        audioClips_Square[4].GetComponent<AudioSource>().Stop();
         sphereAnimator.SetTrigger("Transition");
         audioClips_Sphere[0].GetComponent<AudioSource>().Play();
 

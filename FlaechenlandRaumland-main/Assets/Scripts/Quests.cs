@@ -99,7 +99,7 @@ public class Quests : MonoBehaviour {
         while (giessen) {
             yield return null;
         }
-
+        
         /** Gieﬂen fertig **/
         yield return new WaitForSeconds(4.0f);
         StopAllAudio();
